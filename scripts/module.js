@@ -6,5 +6,5 @@ Hooks.once('init', async function() {
 });
 
 Hooks.once('ready', async function() {
-  if (game.settings.get("scriptlets", "lukasSheetFilter")) addLukasCharSheetFilter();
+  if (game.settings.get("dnd5e_scriptlets", "lukasSheetFilter")) addLukasCharSheetFilter();
 });

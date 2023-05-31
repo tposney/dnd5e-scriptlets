@@ -1,6 +1,6 @@
 {
-  "id": "scriptlets",
-  "title": "Scriplets - QOL bits and pieces with nowhere else to live",
+  "id": "dnd5e_scriptlets",
+  "title": "DND5E Scriplets - 5E QOL bits and pieces",
   "description": "QOL bits and pieces with nowhere else to live with nowhere else to live",
   "version": "#{VERSION}#",
   "library": "false",
