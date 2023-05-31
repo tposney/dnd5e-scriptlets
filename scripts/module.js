@@ -1,4 +1,4 @@
-import { addLukasCharSheetFilter } from "./lukas-char-sheet-qol";
+import { addLukasCharSheetFilter } from "./lukas-char-sheet-qol.js";
 
 Hooks.once('init', async function() {
 
