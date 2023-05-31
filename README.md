@@ -15,7 +15,7 @@ This module provides a few QOL features for dnd5e that don't really fit anywhere
 ## Lukas Character Sheet Filter
 This provides a filter field on character sheets to filter (by name) items/spells/features.
 
-## Lukaa Ammunition Selector.
+## Lukas Ammunition Selector.
 When enabled any time a weapon with ammo is used a dialog appears prompting you to choose the ammunition to use. If there is no suitable ammunition the weapon roll is blocked. This version does not require midi-qol, just dnd5e.
 
 ## Changelog
