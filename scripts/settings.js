@@ -1,3 +1,4 @@
+export function registerSettings() {
 game.settings.register("scriptlets", "lukasSheetFilter", {
   name: game.i18n.localize("scriptlets.LukasSheetFilter.Name"),
   hint: game.i18n.localize("scriptlets.LukasSheetFilter.Hint"),
@@ -8,3 +9,4 @@ game.settings.register("scriptlets", "lukasSheetFilter", {
   //@ts-ignore v10
   requiresReload: true
 });
+}

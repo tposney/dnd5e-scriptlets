@@ -1,6 +1,8 @@
 import { addLukasCharSheetFilter } from "./lukas-char-sheet-qol.js";
+import { registerSettings } from "./settings.js";
 
 Hooks.once('init', async function() {
+  registerSettings();
 
 });
 
