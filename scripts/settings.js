@@ -1,9 +1,9 @@
 export function registerSettings() {
-  const translations = game.i18n.translations["dnd5e_scriptlets"];
+  const translations = game.i18n.translations["dnd5e-scriptlets"];
 console.error("trans",  translations.AmmoSelector.Options);
-	game.settings.register("dnd5e_scriptlets", "lukasSheetFilter", {
-		name: game.i18n.localize("dnd5e_scriptlets.LukasSheetFilter.Name"),
-		hint: game.i18n.localize("dnd5e_scriptlets.LukasSheetFilter.Hint"),
+	game.settings.register("dnd5e-scriptlets", "lukasSheetFilter", {
+		name: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Name"),
+		hint: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Hint"),
 		scope: "world",
 		default: false,
 		config: true,
@@ -12,9 +12,9 @@ console.error("trans",  translations.AmmoSelector.Options);
 		requiresReload: true,
 	});
 
-  game.settings.register("dnd5e_scriptlets", "ammoSelector", {
-    name: game.i18n.localize("dnd5e_scriptlets.AmmoSelector.Name"),
-    hint: game.i18n.localize("dnd5e_scriptlets.AmmoSelector.Hint"),
+  game.settings.register("dnd5e-scriptlets", "ammoSelector", {
+    name: game.i18n.localize("dnd5e-scriptlets.AmmoSelector.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AmmoSelector.Hint"),
     scope: "client",
     default: "off",
     type: String,

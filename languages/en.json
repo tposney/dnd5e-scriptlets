@@ -1,7 +1,7 @@
 {
-  "dnd5e_scriptlets.LukasSheetFilter.Name": "Add Filter field to character sheet",
-  "dnd5e_scriptlets.LukasSheetFilter.Hint": "Allows you to filter character sheet items/spells/features by a text filter. Thansk @Lukas",
-  "dnd5e_scriptlets.AmmoSelector": {
+  "dnd5e-scriptlets.LukasSheetFilter.Name": "Add Filter field to character sheet",
+  "dnd5e-scriptlets.LukasSheetFilter.Hint": "Allows you to filter character sheet items/spells/features by a text filter. Thansk @Lukas",
+  "dnd5e-scriptlets.AmmoSelector": {
     "Name": "Ammo Selector",
     "Hint": "Enable to present a select ammo dialog when using a ranged weapon",
     "Options": {

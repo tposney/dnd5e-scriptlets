@@ -8,13 +8,13 @@ Hooks.once('init', async function() {
 
 Hooks.once('setup', () => {
 
-  console.log("dnd5e_scriptlets | registering settings");
+  console.log("dnd5e-scriptlets | registering settings");
   registerSettings();
 })
 Hooks.once('ready', async function() {
-  console.error("dnd5e_scriptlets | Doing ready settings")
-  if (game.settings.get("dnd5e_scriptlets", "lukasSheetFilter")) {
-    console.log("dnd5e_scriptlets | registering Lukas Character Sheet Filters");
+  console.error("dnd5e-scriptlets | Doing ready settings")
+  if (game.settings.get("dnd5e-scriptlets", "lukasSheetFilter")) {
+    console.log("dnd5e-scriptlets | registering Lukas Character Sheet Filters");
     addLukasCharSheetFilter();
   }
 
@@ -23,5 +23,5 @@ Hooks.once('ready', async function() {
   const API = {
     ammoSelector: ammoSelector
   }
-  setProperty(globalThis, "dnd5e_scriptlets.API", API);
+  setProperty(globalThis, "dnd5e-scriptlets.API", API);
 });
