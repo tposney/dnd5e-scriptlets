@@ -1,3 +1,4 @@
 {
-    "MODULE.hello": "hello"
+  "scriptlets.LukasSheetFilter.Name": "Add Filter field to character sheet",
+  "scriptlets.LukasSheetFilter.Hint": "Allows you to filter character sheet items/spells/features by a text filter. Thansk @Lukas"
 }

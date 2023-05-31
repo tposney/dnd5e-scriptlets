@@ -1,0 +1,21 @@
+
+.spellbook .items-list .item:has(a.item-control.item-toggle:not(.fixed, .active)) {
+  opacity: 45%;
+  background: #0001
+}
+
+.spellbook .items-list .item:has(a.item-control.item-toggle:not(.fixed, .active)) .item-image {
+  opacity: 35%;
+}
+
+.dnd5e.sheet.actor.character .spellbook .item-controls .item-toggle.fixed, .dnd5e.sheet.actor.character .spellbook .item-controls .item-toggle, .dnd5e.sheet.actor .inventory-list .item .item-name i.not-attuned {
+  color: #7a7971;
+}
+
+.dnd5e.sheet.actor .inventory-list .item .item-name i.attuned, .dnd5e.sheet.actor.character .spellbook .item-controls .item-toggle.active {
+  color: #a55;
+}
+.dnd5e.sheet .filter-list {
+    max-width: 100%;
+    padding: 3px;
+}
