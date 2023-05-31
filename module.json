@@ -1,7 +1,7 @@
 {
   "id": "scriptlets",
-  "title": "various QOL bits and pieces with nowhere else to live",
-  "description": "",
+  "title": "Scriplets - QOL bits and pieces with nowhere else to live",
+  "description": "QOL bits and pieces with nowhere else to live with nowhere else to live",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
