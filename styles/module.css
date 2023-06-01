@@ -1,13 +1,4 @@
 
-.spellbook .items-list .item:has(a.item-control.item-toggle:not(.fixed, .active)) {
-  opacity: 45%;
-  background: #0001
-}
-
-.spellbook .items-list .item:has(a.item-control.item-toggle:not(.fixed, .active)) .item-image {
-  opacity: 35%;
-}
-
 .dnd5e.sheet.actor.character .spellbook .item-controls .item-toggle.fixed, .dnd5e.sheet.actor.character .spellbook .item-controls .item-toggle, .dnd5e.sheet.actor .inventory-list .item .item-name i.not-attuned {
   color: #7a7971;
 }
@@ -18,4 +9,37 @@
 .dnd5e.sheet .filter-list {
     max-width: 100%;
     padding: 3px;
+}
+
+.item.rarity-color-common {
+  background-color: rgba(255, 255, 225, 0.25);
+}
+
+.item.rarity-color-uncommon {
+  background-color: rgba(0, 255, 0, 0.15);
+}
+
+.item.rarity-color-rare {
+  background-color: rgba(0, 128, 255, 0.15);
+}
+
+.item.rarity-color-veryrare {
+  background-color: rgba(255, 128, 0, 0.15);
+}
+
+.item.rarity-color-legendary {
+  background-color: rgba(153, 51, 255, 0.15);
+}
+
+.item.rarity-color-artifact {
+  background-color: rgba(255, 225, 0, 0.3);
+}
+
+.preparation-unprepared {
+    opacity: 45%;
+    background: #0001
+}
+
+.preparation-unprepared .item-image {
+    opacity: 35%;
 }

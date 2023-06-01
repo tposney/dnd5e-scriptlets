@@ -1,6 +1,7 @@
-export function addLukasCharSheetFilter() {
+export function setupLukasCharSheetFilter() {
 	//From @Lukas
 	Hooks.on("renderActorSheet", (sheet, html) => {
+    if (!game.settings.get("dnd5e-scriptlets", "lukasSheetFilter")) return;
 		if (sheet.constructor.name !== "ActorSheet5eCharacter") return;
 
 		const tabsToFilter = ["inventory", "features", "spellbook"];

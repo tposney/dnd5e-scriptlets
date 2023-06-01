@@ -17,8 +17,7 @@ const weaponToAmmo = {
 	scattergun: "shot",
 };
 
-export function addAmmoSelector() {
-	console.error("registering pre item roll hook");
+export function setupAmmoSelector() {
 	Hooks.on("dnd5e.preUseItem", ammoSelector);
 }
 

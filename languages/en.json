@@ -1,13 +1,17 @@
 {
-  "dnd5e-scriptlets.LukasSheetFilter.Name": "Add Filter field to character sheet",
-  "dnd5e-scriptlets.LukasSheetFilter.Hint": "Allows you to filter character sheet items/spells/features by a text filter. Thansk @Lukas",
+  "dnd5e-scriptlets.LukasSheetFilter.Name": "Add Filter to character sheet",
+  "dnd5e-scriptlets.LukasSheetFilter.Hint": "Allows you to filter character sheet items/spells/features by a text filter. Thanks @Lukas",
   "dnd5e-scriptlets.AmmoSelector": {
     "Name": "Ammo Selector",
-    "Hint": "Enable to present a select ammo dialog when using a ranged weapon",
+    "Hint": "Enable to present a select ammo dialog when using a ranged weapon Thanks @Lukas",
     "Options": {
       "off": "Disable",
       "on": "Enable",
       "onDark": "Enable Dark Mode"
     }
-  }
+  },
+  "dnd5e-scriptlets.LukasItemRarityColors.Name": "Rarity Colors",
+  "dnd5e-scriptlets.LukasItemRarityColors.Hint": "Color Inventory lines according to item rarity Thanks @Lukas",
+  "dnd5e-scriptlets.LukasFadeUnprepared.Name": "Fade Unprepared",
+  "dnd5e-scriptlets.LukasFadeUnprepared.Hint": "Fade out unprepared spells. Thanks @Lukas"
 }

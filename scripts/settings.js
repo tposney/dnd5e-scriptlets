@@ -1,6 +1,6 @@
 export function registerSettings() {
   const translations = game.i18n.translations["dnd5e-scriptlets"];
-console.error("trans",  translations.AmmoSelector.Options);
+
 	game.settings.register("dnd5e-scriptlets", "lukasSheetFilter", {
 		name: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Name"),
 		hint: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Hint"),
@@ -8,8 +8,26 @@ console.error("trans",  translations.AmmoSelector.Options);
 		default: false,
 		config: true,
 		type: Boolean,
-		//@ts-ignore v10
-		requiresReload: true,
+		requiresReload: false
+	});
+
+  game.settings.register("dnd5e-scriptlets", "lukasItemRarityColors", {
+		name: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Name"),
+		hint: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Hint"),
+		scope: "world",
+		default: false,
+		config: true,
+		type: Boolean,
+		requiresReload: false
+	});
+  game.settings.register("dnd5e-scriptlets", "lukasFadeUnprepared", {
+		name: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Name"),
+		hint: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Hint"),
+		scope: "world",
+		default: false,
+		config: true,
+		type: Boolean,
+		requiresReload: false
 	});
 
   game.settings.register("dnd5e-scriptlets", "ammoSelector", {
@@ -20,5 +38,6 @@ console.error("trans",  translations.AmmoSelector.Options);
     type: String,
     config: true,
     choices: translations.AmmoSelector.Options,
+    requiresReload: false
   });
 }
