@@ -109,7 +109,7 @@ export function ammoSelector(item, config, options) {
                     margin-bottom: 4px;
                     ${
 						darkMode
-							? "background-color: #333; color: var(--color-text-light-highlight); border: 2px groove #333"
+							? "background-color: #333; color: var(--color-text-light-highlight); border: 2px groove #000"
 							: ""
 					}
                   }
@@ -131,11 +131,12 @@ export function ammoSelector(item, config, options) {
 					{ id }
 				);
 			}
-      setProperty(options, "ammoSelector.hasRun", true);
-      item.use(config, options)
+			setProperty(options, "ammoSelector.hasRun", true);
+      setProperty(options, "workflowOptions.lateTargeting", "none");
+			item.use(config, options);
 		};
-    doDialog();
-    return false;
+		doDialog();
+		return false;
 	}
-  return true;
+	return true;
 }

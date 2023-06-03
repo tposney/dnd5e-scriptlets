@@ -12,16 +12,18 @@
 # DND5E Scriptlets
 This module provides a few QOL features for dnd5e that don't really fit anywhere else.
 
-## Lukas' Ammunition Selector.
-When enabled, any time a weapon with ammo is used a dialog appears prompting you to choose the ammunition to use. If there is no suitable ammunition the weapon roll is blocked. This version does not require midi-qol, just dnd5e. Enabling is a client setting so each player can choose to enable it.
+## Ammunition Selector.
+When enabled, any time a weapon with ammo is used a dialog appears prompting you to choose the ammunition to use. If there is no suitable ammunition the weapon roll is blocked. This version does not require midi-qol, just dnd5e. Enabling is a client setting so each player can choose to enable it. Thanks @Lukas and @Krigsmaskine
 
 ## Lukas' Character Sheet Filter
-This provides a filter field on character sheets to filter (by name) items/spells/features.
+This provides a filter field on character sheets to filter (by name) items/spells/features. Thanks @Lukas
 
 ## Lukas' Fade Unprepared Spells
-Spells that are not prpepared are faded out on display.
+Spells that are not prpepared are faded out on display. Thanks @Lukas
 
 ## Lukas' Item rarity colors.
-Color item inventory lines according to the item's rarity.
+Color item inventory lines according to the item's rarity. Thanks @Lukas
 
 ## Changelog
+### 0.3
+* Fix for doing late targeting twice (if using midi-qol)
