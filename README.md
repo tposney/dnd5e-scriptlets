@@ -41,6 +41,6 @@ When enabled an unlinked token dropped to the canvas will have it's Hp auto roll
 
 ## Changelog
 ### 0.4
-* Added Clean Rolls, Item Rechard, Legendary Recharge, Token Resizer, Roll Unlinked Token HP
+* Added Clean Rolls, Item Recharge, Legendary Recharge, Token Resizer, Roll Unlinked Token HP
 ### 0.3
 * Fix for doing late targeting twice (if using midi-qol)
