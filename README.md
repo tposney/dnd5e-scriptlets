@@ -12,6 +12,9 @@
 # DND5E Scriptlets
 This module provides a few QOL features for dnd5e that don't really fit anywhere else.
 
+## Clean Rolls
+When enabled the roll formulas with "+ +" "+ -" should be converted to a single "+" or "-". Requires libwrapper.
+
 ## Ammunition Selector.
 When enabled, any time a weapon with ammo is used a dialog appears prompting you to choose the ammunition to use. If there is no suitable ammunition the weapon roll is blocked. This version does not require midi-qol, just dnd5e. Enabling is a client setting so each player can choose to enable it. Thanks @Lukas and @Krigsmaskine
 
@@ -24,6 +27,20 @@ Spells that are not prpepared are faded out on display. Thanks @Lukas
 ## Lukas' Item rarity colors.
 Color item inventory lines according to the item's rarity. Thanks @Lukas
 
+## Auto Item Rechage
+When enabled at the start of an actors turn items with a recharge will have their recahrge rolled.
+
+## Legendary Recharge
+When enabled legendary actions will be reset at the start of the actors turn.
+
+## Token Resizer
+When enabled adds a resizer icon to the token controls sidebar to allow setting selected tokens size. requires warpgate.
+
+## Roll Unlinked Toeken HP
+When enabled an unlinked token dropped to the canvas will have it's Hp auto rolled.
+
 ## Changelog
+### 0.4
+* Added Clean Rolls, Item Rechard, Legendary Recharge, Token Resizer, Roll Unlinked Token HP
 ### 0.3
 * Fix for doing late targeting twice (if using midi-qol)
