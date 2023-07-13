@@ -46,12 +46,12 @@ export function setupTokenResizer() {
   dnsSize: if present set the token.trait.size to this otherwise use the size passed to doResize tokens
 */
 let sizeData = { 
-  "timy": {label: "Tiny", tokenSize: 0.25, minScale: 1},
+  "tiny": {label: "Tiny", tokenSize: 0.25, minScale: 1},
   "sml": {label: "Small", tokenSize: 1, scale: 0.5},
   "med": {label: "Medium", tokenSize: 1, minScale: 1},
   "lg": {label: "Large", tokenSize: 2, minScale: 1},
   "huge": {label: "Huge", tokenSize: 3, minScale: 1},
-  // "huge-snake": {label: "Huge Snake", height: 3, width: 1, minScaleY: 3, dndSize: "huge"},
+  //"huge-snake": {label: "Huge Snake", height: 3, width: 1, minScaleY: 3, dndSize: "huge"},
   "grg": {label: "Gargantuan", tokenSize: 4, minScale: 1},
   "unit": {label: "An Absolute Unit", tokenSize: 8, minScale: 1, dndSize: "grg"},
  };
@@ -83,7 +83,8 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
 */
 export async function queryResizeTokens(tokens, sizeDataToUse = globalThis.dnd5eScriptlets.API.tokenResizeData) {
   const buttonData = {
-    buttons: Object.entries(sizeDataToUse).map(sd => ({label: sd[1].label, value:sd[0]}))
+    buttons: Object.entries(sizeDataToUse).map(sd => ({label: sd[1].label, value:sd[0]})),
+    title: "Change Size?"
   }
 	let size = await warpgate.buttonDialog(buttonData, "row");
   return await doResizeTokens(tokens, size, sizeDataToUse);

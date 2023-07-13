@@ -43,3 +43,11 @@
 .preparation-unprepared .item-image {
     opacity: 35%;
 }
+
+.dialog-button.Tiny {
+    margin: 0 5px !important;
+}
+
+.dialog-button.An.Absolute.Unit {
+    margin: 5px;
+}
