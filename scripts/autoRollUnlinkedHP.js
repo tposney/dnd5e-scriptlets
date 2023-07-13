@@ -1,7 +1,7 @@
 export function setupAutoRollUnlinkedHP() {
 	Hooks.on("preCreateToken", (tokenDocument, data, options, userId) => {
 		if (!game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP")) return;
-		const actor = gtokenDocument.actor;
+		const actor = tokenDocument.actor;
 		if (!actor || data.actorLink) return;
 
 		const hpRoll = {};

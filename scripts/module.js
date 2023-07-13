@@ -6,34 +6,30 @@ import { setupLukasFadeUnprepared } from "./fade-unprepared.js";
 import { setupLegendaryRecharge } from "./legendaryRecharge.js";
 import { setupAutoItemRecharge } from "./autoItemRecharge.js";
 import { setupAutoRollUnlinkedHP } from "./autoRollUnlinkedHP.js";
-import { checkTokenResizer, setupTokenResizer } from "./tokenResizer.js";
+import { checkTokenResizer, setupTokenResizer, queryResizeTokens, doResizeTokens } from "./tokenResizer.js";
 import { setupCleanRolls, checkCleanRolls } from "./cleanRolls.js";
 
-
-Hooks.once('init', async function() {
-    console.log("dnd5e-scriptlets | doing init setup");
-
-  setupTokenResizer();
+Hooks.once("init", async function () {
+	console.log("dnd5e-scriptlets | doing init setup");
+	setProperty(globalThis, "dnd5eScriptlets.API", {});
+	setupTokenResizer();
 });
 
-Hooks.once('setup', () => {
-  console.log("dnd5e-scriptlets | doing setup");
-  registerSettings();
-  setupCleanRolls();
+Hooks.once("setup", () => {
+	console.log("dnd5e-scriptlets | doing setup");
+	registerSettings();
+	setupCleanRolls();
 });
 
-Hooks.once('ready', async function() {
-  console.log("dnd5e-scriptlets | Doing ready setup")
-  setupLukasCharSheetFilter();
-  setupLukasItemRarityColors();
-  setupLukasFadeUnprepared();
-  setupAmmoSelector();
-  setupLegendaryRecharge();
-  setupAutoItemRecharge();
-  setupAutoRollUnlinkedHP();
-  checkTokenResizer();
-  checkCleanRolls();
-  const API = {
-  }
-  setProperty(globalThis, "dnd5eScriptlets.API", API);
+Hooks.once("ready", async function () {
+	console.log("dnd5e-scriptlets | Doing ready setup");
+	setupLukasCharSheetFilter();
+	setupLukasItemRarityColors();
+	setupLukasFadeUnprepared();
+	setupAmmoSelector();
+	setupLegendaryRecharge();
+	setupAutoItemRecharge();
+	setupAutoRollUnlinkedHP();
+	checkTokenResizer();
+	checkCleanRolls();
 });
