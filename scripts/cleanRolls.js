@@ -1,7 +1,7 @@
 export function checkCleanRolls() {
   if (!game.settings.get("dnd5e-scriptlets", "cleanRolls")) return;
   if (!globalThis.libWrapper) {
-    errorMessage = game.i18n.localize("dnd5e-scriptlets.needsLibWrapper");
+    const errorMessage = game.i18n.localize("dnd5e-scriptlets.needsLibWrapper");
     console.error(errorMessage);
     ui.notifications?.error(errorMessage, {permanent: true});
   }
@@ -62,8 +62,8 @@ function setupCleanAttackRolls() {
     cleanAtFields(rollConfig);
   });
   Hooks.on("dnd5e.rollAttack", (iteem, roll, ammoutUpdate) => {
-    roll.resetFormula();
-  })
+    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    else roll._formula = Roll.getFormula(roll.terms);  })
   return true;
 }
 
@@ -73,8 +73,8 @@ function setupCleanDamageRolls() {
     cleanAtFields(rollConfig);
   });
   Hooks.on("dnd5e.rollDamage", (iteem, roll, ammoutUpdate) => {
-    roll.resetFormula();
-  })
+    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    else roll._formula = Roll.getFormula(roll.terms);  })
   return true;
 }
 
@@ -85,7 +85,8 @@ function setupCleanSkillRoll() {
     return true;
   });
   Hooks.on("dnd5e.rollSkill", (actor, roll, skillId) => {
-    roll.resetFormula();
+    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    else roll._formula = Roll.getFormula(roll.terms);
   });
 
 }
@@ -96,7 +97,8 @@ function setupCleanAbiityTest() {
 
   });
   Hooks.on("dnd5e.rollAbilityTest", (actor, roll, skillId) => {
-    roll.resetFormula();
+    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    else roll._formula = Roll.getFormula(roll.terms);
   });
   return true;
 }
@@ -107,7 +109,8 @@ function setupCleanAbiitySave() {
     cleanAtFields(rollConfig);
   });
   Hooks.on("dnd5e.rollAbilitySave", (actor, roll, skillId) => {
-    roll.resetFormula();
+    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    else roll._formula = Roll.getFormula(roll.terms);
   });
   return true;
 }

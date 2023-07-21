@@ -1,6 +1,6 @@
-export function registerSettings() {
-  const translations = game.i18n.translations["dnd5e-scriptlets"];
+import { geti18nOptions } from "./module.js";
 
+export function registerSettings() {
   game.settings.register("dnd5e-scriptlets", "cleanRolls", {
 		name: game.i18n.localize("dnd5e-scriptlets.CleanRolls.Name"),
 		hint: game.i18n.localize("dnd5e-scriptlets.CleanRolls.Hint"),
@@ -47,7 +47,7 @@ export function registerSettings() {
     default: "off",
     type: String,
     config: true,
-    choices: translations.AmmoSelector.Options,
+    choices: geti18nOptions("AmmoSelectorOptions"),
     requiresReload: false
   });
 

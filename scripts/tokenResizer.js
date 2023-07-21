@@ -22,7 +22,7 @@ export function setupTokenResizer() {
 			token.tools.splice(i, 0, {
 				name: "tokenResizer",
 				title: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Name"),
-				icon: "fas fa-arrows-alt",
+				icon: "fas fa-expand-alt",
 				visible: true,
 				onClick: () => {
 					if (game.canvas.tokens.controlled.length < 1) {
