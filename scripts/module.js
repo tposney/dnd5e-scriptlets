@@ -8,6 +8,7 @@ import { setupAutoItemRecharge } from "./autoItemRecharge.js";
 import { setupAutoRollUnlinkedHP } from "./autoRollUnlinkedHP.js";
 import { checkTokenResizer, setupTokenResizer } from "./tokenResizer.js";
 import { setupCleanRolls, checkCleanRolls } from "./cleanRolls.js";
+import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
 
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
@@ -25,7 +26,6 @@ Hooks.once("setup", () => {
 });
 
 Hooks.once("ready", async function () {
-
 	console.log("dnd5e-scriptlets | Doing ready setup");
 	setupLukasCharSheetFilter();
 	setupLukasItemRarityColors();
@@ -36,6 +36,7 @@ Hooks.once("ready", async function () {
 	setupAutoRollUnlinkedHP();
 	checkTokenResizer();
 	checkCleanRolls();
+  setupAlternativeAdvantage();
 });
 
 export function geti18nOptions(key) {

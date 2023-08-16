@@ -65,12 +65,13 @@ export function registerSettings() {
     name: game.i18n.localize("dnd5e-scriptlets.AutoItemRecharge.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.AutoItemRecharge.Hint"),
     scope: "world",
-    type: Boolean,
+    type: String,
+    choices: geti18nOptions("AutoItemRechargeOptions"),
     default: false,
     config: true,
     requiresReload: false
   });
-
+  
 
   game.settings.register("dnd5e-scriptlets", "autoRollUnlinkedHP", {
     name: game.i18n.localize("dnd5e-scriptlets.AutoRollUnlinkedHP.Name"),
@@ -91,4 +92,15 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
+
+  game.settings.register("dnd5e-scriptlets", "alternativeAdvantage", {
+    name: game.i18n.localize("dnd5e-scriptlets.AlternativeAdvantage.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AlternativeAdvantage.Hint"),
+    scope: "world",
+    type: String,
+    default: undefined,
+    config: true,
+    requiresReload: false
+  });
+
 }

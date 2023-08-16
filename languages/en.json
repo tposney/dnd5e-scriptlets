@@ -14,6 +14,11 @@
   "dnd5e-scriptlets.LukasFadeUnprepared.Hint": "Fade out unprepared spells. Thanks @Lukas",
   "dnd5e-scriptlets.AutoItemRecharge.Name": "Auto recharge items",
   "dnd5e-scriptlets.AutoItemRecharge.Hint": "Auto roll to recharge items on turn start",
+  "dnd5e-scriptlets.AutoItemRechargeOptions": {
+    "off": "Disable",
+    "silent": "Recharge without chat message",
+    "chatter": "Recharge with chat message"
+  },
   "dnd5e-scriptlets.LegendaryRecharge.Name": "Recharge legendary actions",
   "dnd5e-scriptlets.LegendaryRecharge.Hint": "Auto recharge legendary actions on turn start",
   "dnd5e-scriptlets.AutoRollUnlinkedHP.Name": "Roll NPC HP",
@@ -24,5 +29,7 @@
   "dnd5e-scriptlets.NoTokenSelected": "DND5E-Scriptlets | Token Resizer: Select at least one token to resize",
   "dnd5e-scriptlets.CleanRolls.Name": "Clean Rolls",
   "dnd5e-scriptlets.CleanRolls.Hint": "Remove duplicate '+' and '-' from dnd5e rolls",
-  "dnd5e-scriptlets.needsLibWrapper": "DND5D-Scirptlets | Clean Rolls: libwrapper must be installed and active"
+  "dnd5e-scriptlets.needsLibWrapper": "DND5D-Scirptlets | Clean Rolls: libwrapper must be installed and active",
+  "dnd5e-scriptlets.AlternativeAdvantage.Name": "Alternative Advantage",
+  "dnd5e-scriptlets.AlternativeAdvantage.Hint": "Advantage/Disadvantage gives a roll expression bonus instea of rolling 2 dice. You can use '1d4 @abilities.str.mod' for example"
 }
