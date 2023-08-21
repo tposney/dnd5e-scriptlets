@@ -98,7 +98,7 @@ export function registerSettings() {
     hint: game.i18n.localize("dnd5e-scriptlets.AlternativeAdvantage.Hint"),
     scope: "world",
     type: String,
-    default: undefined,
+    default: "",
     config: true,
     requiresReload: false
   });

@@ -1,3 +1,6 @@
+### 0.9.1
+* Fix for error being thrown in v10 when managing settings.
+
 ### 0.9
 * Added "Alternative Advantage" which allows you to specify a roll formula to add/subtract to a roll for advantage/disadvantage instead of rolling 2 dice.
   - The roll is evaluated against the actor/items roll data so expressions like "1d4 + @abilities.str.mod" will work, or just a number like 2

@@ -25,7 +25,6 @@ function configureAdvantage(wrapped) {
   if (!advantageQuantum || advantageQuantum.trim().length === 0) return;
   const d20 = this.terms[0];
   if (this.hasAdvantage) {
-    console.error("configure adv data is ", this.data)
     d20.modifiers = d20.modifiers?.filter(s => s !== "kh");
     this.terms.push(new OperatorTerm({operator: "+"}));
     const extraTerms = new Roll(advantageQuantum, this.data).terms;
@@ -40,19 +39,4 @@ function configureAdvantage(wrapped) {
     d20.number = 1;
   }
   this._formula = this.constructor.getFormula(this.terms);
-}
-function advantageAdjust(...args) {
-  if (!game.settings.get("dnd5e-scriptlets", "alternativeAdvantage")) return;
-  const [actorOrItem, rollData] = args;
-  if (rollData.advantage) {
-    rollData.data.adv = 2;
-    rollData.parts.push("@adv")
-    rollData.advantage = false;
-  }
-  if (rollData.disadvantage) {
-    rollData.data.disadv = 2;
-    rollData.parts.push("@disadv")
-    rollData.disadvantage = false;
-  }
-  return true;
 }
