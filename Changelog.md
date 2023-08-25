@@ -1,3 +1,8 @@
+### 0.10
+* Added option to whisper recharge message to GM only.
+* legendary actions are recharged when a combatant is added to the combat.
+* items are recharged when a combatant is added to the combat.
+
 ### 0.9.1
 * Fix for error being thrown in v10 when managing settings.
 

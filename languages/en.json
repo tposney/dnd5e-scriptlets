@@ -17,6 +17,7 @@
   "dnd5e-scriptlets.AutoItemRechargeOptions": {
     "off": "Disable",
     "silent": "Recharge without chat message",
+    "whisper": "Recharge with chat message to GM only",
     "chatter": "Recharge with chat message"
   },
   "dnd5e-scriptlets.LegendaryRecharge.Name": "Recharge legendary actions",
