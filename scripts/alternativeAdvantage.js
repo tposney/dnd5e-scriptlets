@@ -35,7 +35,7 @@ function configureAdvantage(wrapped) {
     d20.modifiers = d20.modifiers?.filter(s => s !== "kl");
     this.terms.push(new OperatorTerm({operator: "-"}));
     const extraTerms = new Roll(advantageQuantum, this.data).terms;
-    this.terms.concat(extraTerms)
+    this.terms = this.terms.concat(extraTerms)
     d20.number = 1;
   }
   this._formula = this.constructor.getFormula(this.terms);

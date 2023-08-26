@@ -1,3 +1,6 @@
+### 0.10.1
+* Fix for alternative advantage not setting disadvantage correctly
+
 ### 0.10
 * Added option to whisper recharge message to GM only.
 * legendary actions are recharged when a combatant is added to the combat.
