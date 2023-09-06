@@ -17,6 +17,7 @@ Hooks.once("init", async function () {
 
 	setupTokenResizer();
 });
+import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
 
 Hooks.once("setup", () => {
   registerSettings();
@@ -37,6 +38,7 @@ Hooks.once("ready", async function () {
 	checkTokenResizer();
 	checkCleanRolls();
   setupAlternativeAdvantage();
+  setupCollapsibleActorSections();
 });
 
 export function geti18nOptions(key) {

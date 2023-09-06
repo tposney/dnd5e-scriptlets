@@ -1,3 +1,6 @@
+### 0.11
+* Added Collapsible inventory sections for the default character sheet.
+
 ### 0.10.1
 * Fix for alternative advantage not setting disadvantage correctly
 

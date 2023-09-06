@@ -103,4 +103,14 @@ export function registerSettings() {
     requiresReload: false
   });
 
+  game.settings.register("dnd5e-scriptlets", "ActorCollapsibleSection", {
+    name: game.i18n.localize("dnd5e-scriptlets.ActorCollapsibleSection.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.ActorCollapsibleSection.Hint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: false
+  });
+
 }

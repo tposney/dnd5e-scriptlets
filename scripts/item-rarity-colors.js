@@ -18,26 +18,6 @@ Hooks.on("renderActorSheet", (actor, html) => {
 
     let rarity = item.getRollData()?.item?.rarity || item?.system?.rarity || undefined;
     rarity = rarity ? rarity.replaceAll(/\s/g, "").toLowerCase().trim() : undefined;
-    let source = item.system?.source?.toLowerCase();
-    let consumableType = item.system?.consumableType?.toLowerCase() || undefined;
-
-    if (
-      rarity === "common" &&
-      !(
-        source === undefined ||
-        source?.includes("xge") ||
-        source?.includes("xanathar") ||
-        source?.includes("tce") ||
-        source?.includes("tasha") ||
-        consumableType === "potion" ||
-        consumableType === "rod" ||
-        consumableType === "scroll" ||
-        consumableType === "wand"
-      )
-    ) {
-      continue;
-    }
-
     if (rarity) {
       itemElement.classList.add("rarity-color-" + rarity);
     }
