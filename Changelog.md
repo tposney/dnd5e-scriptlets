@@ -1,3 +1,9 @@
+### 0.12
+* Added simple ammo recovery - for a more complete solution use the excellent Ammo Recovery module.
+* Auto executed at end of combat.
+* Can be called per actor with globalThis.dnd5eScriptlets.restoreAmmoActor(actor), or globalThis.dnd5eScriptlets.restoreAmmoActors(). 
+* Magical ammunition is not recovered but the amount consumed is recorded and displayed. Magical ammo must have the magic property set recovery to be disabled.
+
 ### 0.11
 * Added Collapsible inventory sections for the default character sheet.
 

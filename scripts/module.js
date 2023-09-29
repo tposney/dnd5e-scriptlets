@@ -9,6 +9,9 @@ import { setupAutoRollUnlinkedHP } from "./autoRollUnlinkedHP.js";
 import { checkTokenResizer, setupTokenResizer } from "./tokenResizer.js";
 import { setupCleanRolls, checkCleanRolls } from "./cleanRolls.js";
 import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
+import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
+import { restoreAmmoActor, restoreAmmoActors, setupAmmoRecovery } from "./ammoRecovery.js";
+import { setupSocket } from "./GMAction.js";
 
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
@@ -17,7 +20,7 @@ Hooks.once("init", async function () {
 
 	setupTokenResizer();
 });
-import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
+
 
 Hooks.once("setup", () => {
   registerSettings();
@@ -28,6 +31,7 @@ Hooks.once("setup", () => {
 
 Hooks.once("ready", async function () {
 	console.log("dnd5e-scriptlets | Doing ready setup");
+  setupSocket();
 	setupLukasCharSheetFilter();
 	setupLukasItemRarityColors();
 	setupLukasFadeUnprepared();
@@ -39,6 +43,12 @@ Hooks.once("ready", async function () {
 	checkCleanRolls();
   setupAlternativeAdvantage();
   setupCollapsibleActorSections();
+  setupAmmoRecovery();
+
+  globalThis.dnd5eScriptlets.API = {
+    restoreAmmoActor,
+    restoreAmmoActors
+  }
 });
 
 export function geti18nOptions(key) {

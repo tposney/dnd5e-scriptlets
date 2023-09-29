@@ -34,5 +34,9 @@
   "dnd5e-scriptlets.AlternativeAdvantage.Name": "Alternative Advantage",
   "dnd5e-scriptlets.AlternativeAdvantage.Hint": "Advantage/Disadvantage gives a roll expression bonus instea of rolling 2 dice. You can use '1d4 @abilities.str.mod' for example",
   "dnd5e-scriptlets.ActorCollapsibleSection.Name": "Collapsable Inventory Sections",
-  "dnd5e-scriptlets.ActorCollapsibleSection.Hint": "Enabled allows clicking on the inventory section name to collapse the sction"
+  "dnd5e-scriptlets.ActorCollapsibleSection.Hint": "Enabled allows clicking on the inventory section name to collapse the sction",
+  "dnd5e-scriptlets.AmmoTracker.Name": "Recover used ammunition",
+  "dnd5e-scriptlets.AmmoTracker.Hint": "At the end of combat 1/2 of non magical ammo is recovered for each combatant",
+  "dnd5e-scriptlets.AmmoRecoveryMessage.Name": "Display ammo recovery message",
+  "dnd5e-scriptlets.AmmoRecoveryMessage.Hint": "Display the ammuntion recovered at combat end" 
 }

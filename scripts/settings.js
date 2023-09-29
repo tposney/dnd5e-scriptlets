@@ -51,6 +51,24 @@ export function registerSettings() {
     requiresReload: false
   });
 
+  game.settings.register("dnd5e-scriptlets", "ammoTracker", {
+    name: game.i18n.localize("dnd5e-scriptlets.AmmoTracker.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AmmoTracker.Hint"),
+    scope: "world",
+    default: false,
+    type: Boolean,
+    config: true,
+    requiresReload: false
+  });
+  game.settings.register("dnd5e-scriptlets", "ammoRecoveryMessage", {
+    name: game.i18n.localize("dnd5e-scriptlets.AmmoRecoveryMessage.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AmmoRecoveryMessage.Hint"),
+    scope: "world",
+    default: false,
+    type: Boolean,
+    config: true,
+    requiresReload: false
+  });
   game.settings.register("dnd5e-scriptlets", "legendaryRecharge", {
     name: game.i18n.localize("dnd5e-scriptlets.LegendaryRecharge.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.LegendaryRecharge.Hint"),

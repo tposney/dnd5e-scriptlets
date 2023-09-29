@@ -4,6 +4,7 @@
   "description": "QOL bits and pieces with nowhere else to live",
   "version": "#{VERSION}#",
   "library": "false",
+  "socket": true,
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": 10,
@@ -19,7 +20,12 @@
   ],
   "relationships": {
     "systems": [],
-    "requires": []
+    "requires": [
+      {
+        "id": "socketlib",
+        "type": "module"
+      }
+    ]
   },
   "esmodules": [
     "scripts/module.js"
