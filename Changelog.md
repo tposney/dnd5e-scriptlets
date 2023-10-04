@@ -1,3 +1,6 @@
+### 0.14
+* Fix for bogus error reported during initialisation
+
 ### 0.13
 * Fix for token resizer bug introduced in 0.12
 
