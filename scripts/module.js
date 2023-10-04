@@ -44,11 +44,6 @@ Hooks.once("ready", async function () {
   setupAlternativeAdvantage();
   setupCollapsibleActorSections();
   setupAmmoRecovery();
-
-  globalThis.dnd5eScriptlets.API = {
-    restoreAmmoActor,
-    restoreAmmoActors
-  }
 });
 
 export function geti18nOptions(key) {

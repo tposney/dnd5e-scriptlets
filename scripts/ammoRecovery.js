@@ -3,6 +3,10 @@ import { socketlibSocket } from "./GMAction.js";
 export function setupAmmoRecovery() {
   Hooks.on("dnd5e.rollAttack", ammoUsage);
   Hooks.on("deleteCombat", restoreAmmo);
+  globalThis.dnd5eScriptLets.API =  mergeObject(globalThis.dnd5eScriptlets.API, {
+    restoreAmmoActor, 
+    restoreAmmoActors
+  });
 }
 
 export function ammoUsage(item, roll, ammoUpdates) {

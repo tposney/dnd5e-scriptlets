@@ -1,3 +1,6 @@
+### 0.13
+* Fix for token resizer bug introduced in 0.12
+
 ### 0.12
 * Added simple ammo recovery - for a more complete solution use the excellent Ammo Recovery module.
 * Auto executed at end of combat.
