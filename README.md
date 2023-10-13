@@ -39,3 +39,15 @@ When enabled adds a resizer icon to the token controls sidebar to allow setting 
 ## Roll Unlinked Toeken HP
 When enabled an unlinked token dropped to the canvas will have it's Hp auto rolled.
 
+## Alternate Advantage
+Allows you to specify a roll formula to add/subtract to a roll for advantage/disadvantage instead of rolling 2 dice.  
+The roll is evaluated against the actor/items roll data so expressions like "1d4 + @abilities.str.mod" will work, or just a number like 2
+
+## Ammunition Recovery
+Simple ammo recovery - for a more complete solution use the excellent Ammo Recovery module.
+Auto executed at end of combat.  
+Can be called per actor with globalThis.dnd5eScriptlets.restoreAmmoActor(actor), or globalThis.dnd5eScriptlets.restoreAmmoActors().   
+Magical ammunition is not recovered but the amount consumed is recorded and displayed. Magical ammo must have the magic property set recovery to be disabled.  
+
+## Silent Initiative
+Support silent initiative rolls - if enabled initiative rolls are not reported to the chat log.
