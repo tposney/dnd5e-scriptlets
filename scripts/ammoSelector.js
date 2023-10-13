@@ -23,7 +23,7 @@ export function setupAmmoSelector() {
 
 export function ammoSelector(item, config, options) {
 	if (game.settings.get("dnd5e-scriptlets", "ammoSelector") === "off") return true;
-	if (options.ammoSelector?.hasRun) return true;
+	if (options.ammoSelector?.hasRun || config.ammoSelector?.hasRun) return true;
 
 	const darkMode = game.settings.get("dnd5e-scriptlets", "ammoSelector") === "onDark"; // Set to true for dark mode styling
 	// Check if the item is a weapon with ammunition property
@@ -132,7 +132,11 @@ export function ammoSelector(item, config, options) {
 				);
 			}
 			setProperty(options, "ammoSelector.hasRun", true);
+      setProperty(config, "ammoSelector.hasRun", true);
+
       setProperty(options, "workflowOptions.lateTargeting", "none");
+      setProperty(config, "workflowOptions.lateTargeting", "none");
+
 			item.use(config, options);
 		};
 		doDialog();

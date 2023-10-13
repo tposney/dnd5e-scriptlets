@@ -1,4 +1,4 @@
-import { setupAmmoSelector } from "./ammo-selector.js";
+import { setupAmmoSelector } from "./ammoSelector.js";
 import { setupLukasCharSheetFilter } from "./char-sheet-filter.js";
 import { registerSettings } from "./settings.js";
 import { setupLukasItemRarityColors } from "./item-rarity-colors.js";
@@ -11,13 +11,13 @@ import { setupCleanRolls, checkCleanRolls } from "./cleanRolls.js";
 import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
 import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
 import { restoreAmmoActor, restoreAmmoActors, setupAmmoRecovery } from "./ammoRecovery.js";
+import { setupSilentInitiative } from "./silentInitiative.js";
 import { setupSocket } from "./GMAction.js";
 
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
 	setProperty(globalThis, "dnd5eScriptlets.API", {});
   registerSettings();
-
 	setupTokenResizer();
 });
 
@@ -44,6 +44,7 @@ Hooks.once("ready", async function () {
   setupAlternativeAdvantage();
   setupCollapsibleActorSections();
   setupAmmoRecovery();
+  setupSilentInitiative();
 });
 
 export function geti18nOptions(key) {

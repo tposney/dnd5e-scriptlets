@@ -1,3 +1,5 @@
+##3 0.15
+* Support silent initiative rolls - if enabled initiative rolls are not reported to the chat log.
 ### 0.14
 * Fix for bogus error reported during initialisation
 

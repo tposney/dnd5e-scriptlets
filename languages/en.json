@@ -38,5 +38,7 @@
   "dnd5e-scriptlets.AmmoTracker.Name": "Recover used ammunition",
   "dnd5e-scriptlets.AmmoTracker.Hint": "At the end of combat 1/2 of non magical ammo is recovered for each combatant",
   "dnd5e-scriptlets.AmmoRecoveryMessage.Name": "Display ammo recovery message",
-  "dnd5e-scriptlets.AmmoRecoveryMessage.Hint": "Display the ammuntion recovered at combat end" 
+  "dnd5e-scriptlets.AmmoRecoveryMessage.Hint": "Display the ammuntion recovered at combat end",
+  "dnd5e-scriptlets.SilentInitiative.Name":  "Silent Initiative",
+  "dnd5e-scriptlets.SilentInitiative.Hint": "Roll initiative without chat message"
 }
