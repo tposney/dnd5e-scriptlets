@@ -2,10 +2,8 @@
 export function setupCollapsibleActorSections() {
   Hooks.on("renderActorSheet", async (actorSheet, html) => {
     if (!game.settings.get("dnd5e-scriptlets", "ActorCollapsibleSection")) return;
-    // Check if this is a 5E actor sheet
-    if (actorSheet.constructor.name !== 'ActorSheet5eCharacter') {
-      return;
-    }
+  // Rather than checking it is a 5E actor sheet, we check it is a sheet with collapsible sections
+  // This should work for sheets that are close to dnd5e
 
     const actor = actorSheet.actor; // Get the Actor instance from ActorSheet
 

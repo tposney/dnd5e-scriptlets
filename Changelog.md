@@ -1,3 +1,6 @@
+### 0.16
+* Fix the origins of actor effects (as best we can) when creating an actor.
+
 ### 0.15
 * Support silent initiative rolls - if enabled initiative rolls are not reported to the chat log.
 * Added support for Ready Set Roll in ammo selector.

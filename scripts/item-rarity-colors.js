@@ -1,17 +1,17 @@
 export function setupLukasItemRarityColors() {
 
-Hooks.on("renderActorSheet", (actor, html) => {
-  // Check if this is a 5E actor sheet
-  if (actor.constructor.name !== 'ActorSheet5eCharacter')  return;
+
+Hooks.on("renderActorSheet", (app, html) => {
+  // Rather than checking it is a 5e sheet assume that if the classes are the same we can do the same mods.
   if (!game.settings.get("dnd5e-scriptlets", "lukasItemRarityColors")) return;
-  
+
   let items = html.find($(".items-list .item"));
   for (let itemElement of items) {
     let id = itemElement.outerHTML.match(/data-item-id="(.*?)"/);
     if (!id) {
       continue;
     }
-    let item = actor.object.items.get(id[1]);
+    let item = app.object.items.get(id[1]);
     if (!item) {
       continue;
     }

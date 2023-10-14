@@ -140,4 +140,14 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
+
+  game.settings.register("dnd5e-scriptlets", "UpdateCreatedOrigins", {
+    name: game.i18n.localize("dnd5e-scriptlets.UpdateCreatedOrigins.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.UpdateCreatedOrigins.Hint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: false
+  });
 }

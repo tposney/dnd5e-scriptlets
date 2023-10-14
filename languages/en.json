@@ -40,5 +40,7 @@
   "dnd5e-scriptlets.AmmoRecoveryMessage.Name": "Display ammo recovery message",
   "dnd5e-scriptlets.AmmoRecoveryMessage.Hint": "Display the ammuntion recovered at combat end",
   "dnd5e-scriptlets.SilentInitiative.Name":  "Silent Initiative",
-  "dnd5e-scriptlets.SilentInitiative.Hint": "Roll initiative without chat message"
+  "dnd5e-scriptlets.SilentInitiative.Hint": "Roll initiative without chat message",
+  "dnd5e-scriptlets.UpdateCreatedOrigins.Name": "Fix Effect origins when creating actors",
+  "dnd5e-scriptlets.UpdateCreatedOrigins.Hint": "When creating an actor attempt to fix the origins of any effects on the actor"
 }

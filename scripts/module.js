@@ -12,6 +12,7 @@ import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
 import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
 import { restoreAmmoActor, restoreAmmoActors, setupAmmoRecovery } from "./ammoRecovery.js";
 import { setupSilentInitiative } from "./silentInitiative.js";
+import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
 import { setupSocket } from "./GMAction.js";
 
 Hooks.once("init", async function () {
@@ -45,6 +46,7 @@ Hooks.once("ready", async function () {
   setupCollapsibleActorSections();
   setupAmmoRecovery();
   setupSilentInitiative();
+  setupUpdateCreatedOrigins();
 });
 
 export function geti18nOptions(key) {

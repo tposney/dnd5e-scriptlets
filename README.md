@@ -51,3 +51,6 @@ Magical ammunition is not recovered but the amount consumed is recorded and disp
 
 ## Silent Initiative
 Support silent initiative rolls - if enabled initiative rolls are not reported to the chat log.
+
+## Update Created Actors effect origins.
+When creating/importing an actor the origins of the effects may be incorrect. This feature attempts to correct them.
