@@ -17,7 +17,7 @@ import { setupSocket } from "./GMAction.js";
 
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
-	setProperty(globalThis, "dnd5eScriptlets.API", {});
+	setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
 	setupTokenResizer();
 });
@@ -47,6 +47,11 @@ Hooks.once("ready", async function () {
   setupAmmoRecovery();
   setupSilentInitiative();
   setupUpdateCreatedOrigins();
+  const module = game.modules.get("dnd5e-scriptlets");
+  if (module) {
+    if (module.data) module.data.api = globalThis.dnd5eScriptlets.api;
+    module.api = globalThis.dnd5eScriptlets.api;
+  }
 });
 
 export function geti18nOptions(key) {

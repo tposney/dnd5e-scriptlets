@@ -1,3 +1,22 @@
+### 0.17
+* Improved origin fixup and now also applied when creating a token. You can enable auto origin fixing or call it via the api
+  - All effects on the actor/synthetic actor are examined and if replacing the actor reference in the origin with the newly created (synthetic) actor's uuid points to an existing object the updated origin is used instead.
+  - This works for:
+    passive effects (origin of the form ActorUuid.Item.Id), 
+    actor effects (Origin of the form ActorUuid) 
+    any non-transfer errects where the created actor has the item that created the effect. 
+    Otherwise the origin is left untouched.
+  - Will now correct origins when an unlinked  token teleoports to another scene which previously would not.
+  - Will not correct non-transfer effects when teleporting to another scene.
+  game.modules.get("dnd5e-scriptlets").api updated with
+    - fixActorOrigins(Actor) - fix origins for the passed actor
+    - fixTokenOrigins(Token | TokenDocument) - fix origins for the passed token or tokenDoucment
+    - fixActorOriginsForAllActors() - fix origins for all world actors
+    - fixTokenOriginsForScene(scene) - fir origins for all tokens in the passed scene,
+    - fixTokenOriginsForActiveScene() - fix origins for the all tokens in the active scene,
+    - fixTokenOriginsForAllScenes() - fix origins for all tokens in all scenes
+    - If you have ATL active and a token on a scene which is not current requires updating ATL will throw an error (this affects fixTokenOriginsForScene and fixTokenOriginsForAllScenes).
+    
 ### 0.16
 * Fix the origins of actor effects (as best we can) when creating an actor.
 

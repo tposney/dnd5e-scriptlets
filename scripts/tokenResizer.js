@@ -9,9 +9,9 @@ export function setupTokenResizer() {
   if (!game.modules.get("warpgate")?.active) {
     return;
   }
-  globalThis.dnd5eScriptlets.API.tokenResizeData = sizeData;
-  globalThis.dnd5eScriptlets.API.queryResizeTokens = queryResizeTokens;
-  globalThis.dnd5eScriptlets.API.doResizeTokens = doResizeTokens;
+  globalThis.dnd5eScriptlets.api.tokenResizeData = sizeData;
+  globalThis.dnd5eScriptlets.api.queryResizeTokens = queryResizeTokens;
+  globalThis.dnd5eScriptlets.api.doResizeTokens = doResizeTokens;
 
 	Hooks.on("getSceneControlButtons", (controls) => {
 		if (!game.user.isGM || !game.settings.get("dnd5e-scriptlets", "tokenResizer")) return;
@@ -59,7 +59,7 @@ let sizeData = {
  /* Resize the passed tokens to the passed size, which must be a key in the sizeData
     Use sizeDataToUse (defaults to the module defined sizeData) when working which changes to make
   */
-export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dnd5eScriptlets.API.tokenResizeData) {
+export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dnd5eScriptlets.api.tokenResizeData) {
   if (!size) return;
   const sizeEntry = sizeDataToUse[size];
   if (!sizeEntry) return;
@@ -81,7 +81,7 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
   Show a warpgate dialog to choose a new token size
   Use sizeDataToUse which defaults to the module generate size data.
 */
-export async function queryResizeTokens(tokens, sizeDataToUse = globalThis.dnd5eScriptlets.API.tokenResizeData) {
+export async function queryResizeTokens(tokens, sizeDataToUse = globalThis.dnd5eScriptlets.api.tokenResizeData) {
   const buttonData = {
     buttons: Object.entries(sizeDataToUse).map(sd => ({label: sd[1].label, value:sd[0]})),
     title: "Change Size?"
