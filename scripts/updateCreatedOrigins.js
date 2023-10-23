@@ -2,6 +2,7 @@
 export function setupUpdateCreatedOrigins() {
   Hooks.on("createActor", createActorHook);
   Hooks.on("createToken", createTokenHook);
+  Hooks.on("createItem", createItemHook);
   globalThis.dnd5eScriptlets.api = mergeObject(globalThis.dnd5eScriptlets.api, {
     fixActorOrigins,
     fixTokenOrigins,
@@ -10,6 +11,27 @@ export function setupUpdateCreatedOrigins() {
     fixTokenOriginsForActiveScene,
     fixTokenOriginsForAllScenes
   });
+}
+
+function createItemHook(...args) {
+  let [item, options, userId] = args;
+  if (!game.settings.get("dnd5e-scriptlets", "UpdateCreatedOrigins")) return;
+  if (game.user?.id !== userId) return;
+  if (item.parent) return;
+  let effectsChanged = false;
+  const newEffects = [];
+  for (let effect of item.effects) {
+    if (effect.transfer && effect.orign !== item.uuid) {
+      effectsChanged = true;
+      console.log(`dnd5e-scriptlets | Setting ${item.name} effect ${effect.name} origin ${effect.origin} -> ${item.uuid}`)
+      effect.origin = item.uuid;
+    }
+    newEffects.push(effect.toObject());
+  }
+  if (effectsChanged) {
+    item.updateEmbeddedDocuments("ActiveEffect", newEffects);
+  }
+  return true;
 }
 
 function updateActorEffects(actor) {

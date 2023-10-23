@@ -49,7 +49,6 @@ Hooks.once("ready", async function () {
   setupUpdateCreatedOrigins();
   const module = game.modules.get("dnd5e-scriptlets");
   if (module) {
-    if (module.data) module.data.api = globalThis.dnd5eScriptlets.api;
     module.api = globalThis.dnd5eScriptlets.api;
   }
 });

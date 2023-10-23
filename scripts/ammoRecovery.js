@@ -44,8 +44,8 @@ export function restoreAmmoActor(actor) {
       messages.push(`Recovered ${Math.floor(storedQuantities[itemId] / 2)} ${item.name}`);
     }
   }
-  socketlibSocket.executeAsGM("updateActorItems", actor.uuid, updates)
-    .then(() => { socketlibSocket.executeAsGM("unsetFlag", actor.uuid, "dnd5e-scriptlets", "ammoQuantities") })
+  socketlibSocket.executeAsGM("unsetFlag", actor.uuid, "dnd5e-scriptlets", "ammoQuantities") 
+    .then(() => { socketlibSocket.executeAsGM("updateActorItems", actor.uuid, updates) })
     .then(() => {
       if (game.settings.get("dnd5e-scriptlets", "ammoRecoveryMessage") && messages.length) ChatMessage.create({
         content: messages.join("<br>"), speaker: ChatMessage.getSpeaker({ actor: actor })
