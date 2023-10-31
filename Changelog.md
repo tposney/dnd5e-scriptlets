@@ -1,3 +1,6 @@
+### 0.19
+* Fix origins for actors imported from Compendia where transfer effects point back to the compenidum.
+
 ### 0.18
 * Fix for alternate advantage when configuring advantage manually and there is another source of advantage which does the advantage addition twice.
 * Added fix for origins on Sidebar created items.

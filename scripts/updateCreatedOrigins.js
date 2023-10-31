@@ -43,19 +43,25 @@ function updateActorEffects(actor) {
   let changesMade = false;
   for (let effect of actor.effects) {
     const newEffect = effect.toObject();
-    if (typeof effect.origin === "string" && !effect.origin.startsWith("Compendium") && effect.origin.match(originRe)) {
-      let testOrigin;
+    let testOrigin;
+    if (typeof effect.origin === "string" && effect.origin.startsWith("Compendium")) {
+      const originParts = effect.origin.split(".");
+      if (originParts[originParts.length -2] === "Item") {
+        const baseOrigin = originParts.slice(-2).join(".");
+        testOrigin = `${actorUuid}.${baseOrigin}`;
+      } else testOrigin = `${actorUuid}`;
+    } else if (typeof effect.origin === "string" && !effect.origin.startsWith("Compendium") && effect.origin.match(originRe)) {
       if (effect.origin.match(tokenOriginRe)) {
         testOrigin = effect.origin.replace(tokenOriginRe, `${actorUuid}$2`);
       } else {
         testOrigin = effect.origin.replace(originRe, `${actorUuid}$3`);
       }
-      //@ts-expect-error fromUuidSync
-      if (fromUuidSync(testOrigin) && testOrigin !== effect.origin) {
-        changesMade = true;
-        console.log(`dnd5e-scriptlets | ${actor.name} effect ${effect.name} origin ${effect.origin} -> ${testOrigin} ${actorUuid}`);
-        newEffect.origin = testOrigin
-      }
+    }
+    //@ts-expect-error fromUuidSync
+    if (testOrigin && fromUuidSync(testOrigin) && testOrigin !== effect.origin) {
+      changesMade = true;
+      console.log(`dnd5e-scriptlets | ${actor.name} effect ${effect.name} origin ${effect.origin} -> ${testOrigin} ${actorUuid}`);
+      newEffect.origin = testOrigin
     }
     newEffects.push(newEffect);
   }
