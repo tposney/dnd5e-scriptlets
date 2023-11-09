@@ -32,7 +32,7 @@
   "dnd5e-scriptlets.CleanRolls.Hint": "Remove duplicate '+' and '-' from dnd5e rolls",
   "dnd5e-scriptlets.needsLibWrapper": "DND5D-Scirptlets | Clean Rolls: libwrapper must be installed and active",
   "dnd5e-scriptlets.AlternativeAdvantage.Name": "Alternative Advantage",
-  "dnd5e-scriptlets.AlternativeAdvantage.Hint": "Advantage/Disadvantage gives a roll expression bonus instea of rolling 2 dice. You can use '1d4 @abilities.str.mod' for example",
+  "dnd5e-scriptlets.AlternativeAdvantage.Hint": "Advantage/Disadvantage gives a roll expression bonus instead of rolling 2 dice. You can use '1d4 + @abilities.str.mod' for example",
   "dnd5e-scriptlets.ActorCollapsibleSection.Name": "Collapsable Inventory Sections",
   "dnd5e-scriptlets.ActorCollapsibleSection.Hint": "Enabled allows clicking on the inventory section name to collapse the sction",
   "dnd5e-scriptlets.AmmoTracker.Name": "Recover used ammunition",
@@ -42,5 +42,7 @@
   "dnd5e-scriptlets.SilentInitiative.Name":  "Silent Initiative",
   "dnd5e-scriptlets.SilentInitiative.Hint": "Roll initiative without chat message",
   "dnd5e-scriptlets.UpdateCreatedOrigins.Name": "Fix Effect origins when creating actors",
-  "dnd5e-scriptlets.UpdateCreatedOrigins.Hint": "When creating an actor attempt to fix the origins of any effects on the actor"
+  "dnd5e-scriptlets.UpdateCreatedOrigins.Hint": "When creating an actor attempt to fix the origins of any effects on the actor",
+  "dnd5e-scriptlets.BetterScrollCreation.Name": "Better Scroll Creation",
+  "dnd5e-scriptlets.BetterScrollCreation.Hint": "When creating a scroll from a spell copy the effects and flags"
 }

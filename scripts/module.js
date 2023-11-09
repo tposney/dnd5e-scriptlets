@@ -14,6 +14,7 @@ import { restoreAmmoActor, restoreAmmoActors, setupAmmoRecovery } from "./ammoRe
 import { setupSilentInitiative } from "./silentInitiative.js";
 import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
 import { setupSocket } from "./GMAction.js";
+import { setupBetterScrollCreation } from "./betterScrollCreation.js";
 
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
@@ -47,6 +48,7 @@ Hooks.once("ready", async function () {
   setupAmmoRecovery();
   setupSilentInitiative();
   setupUpdateCreatedOrigins();
+  setupBetterScrollCreation();
   const module = game.modules.get("dnd5e-scriptlets");
   if (module) {
     module.api = globalThis.dnd5eScriptlets.api;

@@ -1,3 +1,7 @@
+### 0.20
+* Added feature to improve scroll creation so that effects and flags from the original spell are included in the created scroll.
+* Added option to roll hitpoints for unlinked actors without generating a chat message
+
 ### 0.19
 * Fix origins for actors imported from Compendia where transfer effects point back to the compenidum.
 
