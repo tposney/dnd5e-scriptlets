@@ -1,3 +1,7 @@
+### 0.21
+* Fix for wrong Hook signature in autoRollHP
+* Fix for trying to rewrite effect origins when the actor is in a compendium.
+
 ### 0.20
 * Added feature to improve scroll creation so that effects and flags from the original spell are included in the created scroll.
 * Added option to roll hitpoints for unlinked actors without generating a chat message

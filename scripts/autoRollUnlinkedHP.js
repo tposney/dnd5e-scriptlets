@@ -29,8 +29,8 @@ export function setupAutoRollUnlinkedHP() {
         setProperty(data, "actorData.system.attributes.hp.max", val);
       }
       if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "rollOnly") return;
-      Hooks.once("createToken", token, data, options, userId => {
-        if (userid !== game.user.id) return;
+      Hooks.once("createToken", (token, options, userId) => {
+        if (userId !== game.user.id) return;
         ChatMessage.create({
           content: `@UUID[${token.uuid}]{${token.name}}'s HP set to ${val}`,
           whisper: [game.user.id],

@@ -57,8 +57,9 @@ function updateActorEffects(actor) {
         testOrigin = effect.origin.replace(originRe, `${actorUuid}$3`);
       }
     }
+    // if editing an actor in a compendium the rewritten testOrigin will still reference a compendium so don't do anything
     //@ts-expect-error fromUuidSync
-    if (testOrigin && fromUuidSync(testOrigin) && testOrigin !== effect.origin) {
+    if (testOrigin && !testOrigin.startsWith("Compendium") && fromUuidSync(testOrigin) && testOrigin !== effect.origin) {
       changesMade = true;
       console.log(`dnd5e-scriptlets | ${actor.name} effect ${effect.name} origin ${effect.origin} -> ${testOrigin} ${actorUuid}`);
       newEffect.origin = testOrigin
