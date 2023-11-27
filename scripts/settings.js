@@ -165,4 +165,14 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
+
+  game.settings.register("dnd5e-scriptlets", "griddedGridless", {
+    name: game.i18n.localize("dnd5e-scriptlets.GriddedGridless.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.GriddedGridless.Hint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: false
+  });
 }

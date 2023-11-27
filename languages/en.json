@@ -44,5 +44,7 @@
   "dnd5e-scriptlets.UpdateCreatedOrigins.Name": "Fix Effect origins when creating actors",
   "dnd5e-scriptlets.UpdateCreatedOrigins.Hint": "When creating an actor attempt to fix the origins of any effects on the actor",
   "dnd5e-scriptlets.BetterScrollCreation.Name": "Better Scroll Creation",
-  "dnd5e-scriptlets.BetterScrollCreation.Hint": "When creating a scroll from a spell copy the effects and flags"
+  "dnd5e-scriptlets.BetterScrollCreation.Hint": "When creating a scroll from a spell copy the effects and flags",
+  "dnd5e-scriptlets.GriddedGridless.Name": "Gridded Gridless scenes",
+  "dnd5e-scriptlets.GriddedGridless.Hint": "When calculating distances in a gridless scene use the gridded dnd5e distance calculations"
 }

@@ -1,3 +1,6 @@
+### 0.22
+* Added Gridded Gridless mode. When enabled will force all measure distance calculations to use the dnd5e distance calculation.
+
 ### 0.21
 * Fix for wrong Hook signature in autoRollHP
 * Fix for trying to rewrite effect origins when the actor is in a compendium.

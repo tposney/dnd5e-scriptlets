@@ -15,6 +15,7 @@ import { setupSilentInitiative } from "./silentInitiative.js";
 import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
 import { setupSocket } from "./GMAction.js";
 import { setupBetterScrollCreation } from "./betterScrollCreation.js";
+import { setupGriddedGridless } from "./griddedGridless.js";
 
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
@@ -49,6 +50,7 @@ Hooks.once("ready", async function () {
   setupSilentInitiative();
   setupUpdateCreatedOrigins();
   setupBetterScrollCreation();
+  setupGriddedGridless();
   const module = game.modules.get("dnd5e-scriptlets");
   if (module) {
     module.api = globalThis.dnd5eScriptlets.api;
