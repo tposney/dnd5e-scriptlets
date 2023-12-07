@@ -32,6 +32,8 @@ export function ammoSelector(item, config, options) {
 		let ammoType = weaponToAmmo[weaponType];
 		if (!ammoType) {
 			// do some sort of log message
+      setProperty(options, "ammoSelector.hasRun", true);
+      setProperty(config, "ammoSelector.hasRun", true);
 			return true;
 		}
 		// Filter available ammunition based on weapon type
@@ -43,6 +45,8 @@ export function ammoSelector(item, config, options) {
 
 		// Bypass the dialog if there's only one ammo type left and it's already set on the weapon
 		if (availableAmmo.length === 1 && item.system.consume.target === availableAmmo[0].id) {
+      setProperty(options, "ammoSelector.hasRun", true);
+      setProperty(config, "ammoSelector.hasRun", true);
 			return true;
 		}
 		if (availableAmmo.length === 0) {
@@ -52,6 +56,7 @@ export function ammoSelector(item, config, options) {
 		}
 
 		const doDialog = async () => {
+      let allowRoll = true;
 			if (availableAmmo.length === 1) {
 				// Automatically switch to the available ammunition
 				await item.update({ "system.consume.target": availableAmmo[0].id });
@@ -60,7 +65,7 @@ export function ammoSelector(item, config, options) {
 				);
 			} else {
 				let id = "ammo-select";
-				let options = allAmmo
+				let dialogOptions = allAmmo
 					.sort((a, b) => b.system.quantity - a.system.quantity)
 					.map((ammo) => {
 						let isDisabled = item.system.quantity === 0;
@@ -77,19 +82,20 @@ export function ammoSelector(item, config, options) {
 							disabled: isDisabled,
 							callback: async () => {
 								if (!isDisabled) {
-									return await item.update({ "system.consume.target": ammo.id });
+									await item.update({ "system.consume.target": ammo.id });
+                  return true;
 								}
 							},
 						};
 					});
 				let buttons = {};
-				for (let o of options) {
+				for (let o of dialogOptions) {
 					buttons[o.name.slugify()] = {
 						...o,
 						disabled: o.disabled,
 					};
 				}
-				const dialog = await Dialog.wait(
+				allowRoll = await Dialog.wait(
 					{
 						title: `Select ammunition for ${item.name}`,
 						buttons,
@@ -135,9 +141,8 @@ export function ammoSelector(item, config, options) {
       setProperty(config, "ammoSelector.hasRun", true);
 
       setProperty(options, "workflowOptions.lateTargeting", "none");
-      setProperty(config, "workflowOptions.lateTargeting", "none");
-
-			item.use(config, options);
+      setProperty(options, "workflowOptions.targetConfirmation", "none");
+			if (allowRoll) item.use(config, options);
 		};
 		doDialog();
 		return false;

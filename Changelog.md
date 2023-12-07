@@ -1,3 +1,6 @@
+### 0.23
+* Fix for sometimes not correctly triggering the item use after consuming the ammo in ammoSelector
+
 ### 0.22
 * Added Gridded Gridless mode. When enabled will force all measure distance calculations to use the dnd5e distance calculation.
 
