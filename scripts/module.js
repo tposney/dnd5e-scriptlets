@@ -17,11 +17,30 @@ import { setupSocket } from "./GMAction.js";
 import { setupBetterScrollCreation } from "./betterScrollCreation.js";
 import { setupGriddedGridless } from "./griddedGridless.js";
 
+export let systemString;
+export let systemConfig;
+export let localizeHeader;
+
 Hooks.once("init", async function () {
 	console.log("dnd5e-scriptlets | doing init setup");
 	setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
 	setupTokenResizer();
+  systemString = game.system.id;
+  switch (systemString) {
+    case "dnd5e":
+      systemConfig = CONFIG.DND5E;
+      localizeHeader = "DND5E";
+      break;
+    case "sw5e":
+      systemConfig = CONFIG.SW5E;
+      localizeHeader = "SW5E";
+      break;
+    case "dcc": 
+    systemConfig = CONFIG.DCC;
+    localizeHeader = "DCC";
+    break;
+  }
 });
 
 

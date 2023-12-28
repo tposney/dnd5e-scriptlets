@@ -1,3 +1,5 @@
+import { systemString, localizeHeader, systemConfig } from "./module.js";
+
 export function setupAutoItemRecharge() {
   Hooks.on("updateCombat", async function (combat, update, context, userId) {
     const rechargeSetting = game.settings.get("dnd5e-scriptlets", "autoItemRecharge");
@@ -10,18 +12,18 @@ export function setupAutoItemRecharge() {
     for (const item of actor.items) {
       const recharge = item.system.recharge;
       if (!recharge?.value || recharge?.charged) continue;
-      if (["silent", "whisper"].includes(rechargeSetting)) Hooks.once("dnd5e.preRollRecharge", (item, rollConfig) => {
+      if (["silent", "whisper"].includes(rechargeSetting)) Hooks.once(`${systemString}.preRollRecharge`, (item, rollConfig) => {
         rollConfig.chatMessage = false;
         target = rollConfig.target;
-
         return true;
       });
-      if (rechargeSetting === "whisper") Hooks.once("dnd5e.rollRecharge", (item, roll) => {
+      if (rechargeSetting === "whisper") Hooks.once(`${systemString}.rollRecharge`, (item, roll) => {
         const success = roll.total >= target;
-        const resultMessage = game.i18n.localize(`DND5E.ItemRecharge${success ? "Success" : "Failure"}`);
+        const resultMessage = game.i18n.localize(`${localizeHeader}.ItemRecharge${success ? "Success" : "Failure"}`);
+        const flavor = `${localizeHeader}.ItemRechargeCheck`;
         roll.toMessage({
-          flavor: `${game.i18n.format("DND5E.ItemRechargeCheck", { name: item.name })} - ${resultMessage}`,
-          speaker: ChatMessage.getSpeaker({ actor: item.actor, token: item.actor.token })
+          flavor: `${game.i18n.format(flavor, { name: item.name })} - ${resultMessage}`,
+            speaker: ChatMessage.getSpeaker({ actor: item.actor, token: item.actor.token })
         },
           { rollMode: "gmroll" }
         );
@@ -41,10 +43,11 @@ export function setupAutoItemRecharge() {
       const recharge = item.system.recharge;
       if (!recharge?.value || recharge?.charged) continue;
       await item.update({ "system.recharge.charged": true });
-      const resultMessage = game.i18n.localize(`DND5E.ItemRecharge${"Success"}`);
+      const resultMessage = game.i18n.localize(`${localizeHeader}.ItemRecharge${ "Success"}`);
+      const contentLabel = `${localizeHeader}.ItemRechargeCheck`;
       ChatMessage.create({
         user: game.user.id,
-        content: `${game.i18n.format("DND5E.ItemRechargeCheck", { name: item.name })} - ${resultMessage}`,
+        content: `${ game.i18n.format(contentLabel, { name: item.name }) } - ${ resultMessage }`,
         speaker: ChatMessage.getSpeaker({ actor: item.actor, token: item.actor.token }),
         whisper: [game.user.id],
       });

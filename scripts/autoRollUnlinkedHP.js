@@ -1,21 +1,26 @@
+import { systemString } from "./module.js";
 export function setupAutoRollUnlinkedHP() {
   Hooks.on("preCreateToken", (tokenDocument, data, options, userId) => {
     if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return;
     const actor = tokenDocument.actor;
-    if (!actor || data.actorLink) return;
+    if (!actor || data.actorLink) return true;
 
     const hpRoll = {};
     _rollHP(hpRoll, actor);
     if (!isEmpty(hpRoll)) tokenDocument.updateSource(hpRoll);
+    return true;
   });
 
   function _rollHP(data, actor) {
     const hpProperties = {
       dnd5e: "system.attributes.hp.formula",
       dcc: "system.attributes.hitDice.value",
+      sw5e: "system.attributes.hp.formula"
     };
 
-    const formula = getProperty(actor, hpProperties[game.system.id]);
+    const formula = getProperty(actor, hpProperties[systemString]);
+    if (!hpProperties[systemString]) return undefined;
+
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
       r.roll({ async: false });

@@ -1,6 +1,8 @@
 export function setupBetterScrollCreation() {
   const libWrapper = globalThis.libWrapper;
-  if (libWrapper) libWrapper.register("dnd5e-scriptlets", "CONFIG.Item.documentClass.createScrollFromSpell", createScrollFromSpell, "WRAPPER");
+  if (!CONFIG.Item.documentClass.createScrollFromSpell) {
+    console.warn("dnd5e-scriptlets | BetterScrollCreation disabled due to createScrollFromSpell not found on Item class");
+  } else if (libWrapper) libWrapper.register("dnd5e-scriptlets", "CONFIG.Item.documentClass.createScrollFromSpell", createScrollFromSpell, "WRAPPER");
 }
 
 async function createScrollFromSpell(wrapped, spell, options={}) {

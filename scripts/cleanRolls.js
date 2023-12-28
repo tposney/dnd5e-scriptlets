@@ -1,3 +1,5 @@
+import { systemString } from "./module.js";
+
 export function checkCleanRolls() {
   if (!game.settings.get("dnd5e-scriptlets", "cleanRolls")) return;
   if (!globalThis.libWrapper) {
@@ -57,46 +59,54 @@ function cleanAtFields(rollConfig) {
   }
 }
 function setupCleanAttackRolls() {
-  Hooks.on("dnd5e.preRollAttack",(item, rollConfig) => {
+  const preRollHook = `${systemString}.preRollAttack`
+  Hooks.on(preRollHook,(item, rollConfig) => {
     rollConfig.parts = cleanParts(rollConfig.parts);
     cleanAtFields(rollConfig);
   });
-  Hooks.on("dnd5e.rollAttack", (iteem, roll, ammoutUpdate) => {
+  const rollHook = `${systemString}.rollAttack`
+  Hooks.on(rollHook, (iteem, roll, ammoutUpdate) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);  })
   return true;
 }
 
 function setupCleanDamageRolls() {
-  Hooks.on("dnd5e.preRollDamage",(item, rollConfig) => {
+  const preRollHook = `${systemString}.preRollDamage`;
+  Hooks.on(preRollHook,(item, rollConfig) => {
     rollConfig.parts = cleanParts(rollConfig.parts);
     cleanAtFields(rollConfig);
   });
-  Hooks.on("dnd5e.rollDamage", (iteem, roll, ammoutUpdate) => {
+  const rollHook = `${systemString}.rollDamage`;
+  Hooks.on(rollHook, (iteem, roll, ammoutUpdate) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);  })
   return true;
 }
 
 function setupCleanSkillRoll() {
-  Hooks.on("dnd5e.preRollSkill", (actor, rollConfig) => {
+  const preRollHook = `${systemString}.preRollSkill`
+  Hooks.on(preRollHook, (actor, rollConfig) => {
     rollConfig.parts = cleanParts(rollConfig.parts);
     cleanAtFields(rollConfig);
     return true;
   });
-  Hooks.on("dnd5e.rollSkill", (actor, roll, skillId) => {
+  const rollHook = `${systemString}.rollSkill`;
+  Hooks.on(rollHook, (actor, roll, skillId) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   });
 
 }
 function setupCleanAbiityTest() {
-  Hooks.on("dnd5e.preRollAbilityTest", (actor, rollConfig, abilityId) => {
+  const preRollHook = `${systemString}.preRollAbilityTest`;
+  Hooks.on(preRollHook, (actor, rollConfig, abilityId) => {
     rollConfig.parts = cleanParts(rollConfig.parts);
     cleanAtFields(rollConfig);
 
   });
-  Hooks.on("dnd5e.rollAbilityTest", (actor, roll, skillId) => {
+  const rollHook = `${systemString}.rollAbilityTest`;
+  Hooks.on(rollHook, (actor, roll, skillId) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   });
@@ -104,11 +114,13 @@ function setupCleanAbiityTest() {
 }
 
 function setupCleanAbiitySave() {
-  Hooks.on("dnd5e.preRollAbilitySave", (actor, rollConfig, abilityId) => {
+  const preRollHook = `${systemString}.preRollAbilitySave`
+  Hooks.on(preRollHook, (actor, rollConfig, abilityId) => {
     rollConfig.parts = cleanParts(rollConfig.parts);
     cleanAtFields(rollConfig);
   });
-  Hooks.on("dnd5e.rollAbilitySave", (actor, roll, skillId) => {
+  const rollHook = `${systemString}.rollAbilitySave`;
+  Hooks.on(rollHook, (actor, roll, skillId) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   });

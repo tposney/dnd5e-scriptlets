@@ -2,6 +2,7 @@
 // script allows the selection of ammunition for a weapon item.
 // The ammunition must have a keyword (e.g., "arrow") in its name to be available for selection.
 
+import { systemString } from "./module.js";
 // Define the mapping of weapon types to ammunition keywords
 const weaponToAmmo = {
 	longbow: "arrow",
@@ -18,7 +19,7 @@ const weaponToAmmo = {
 };
 
 export function setupAmmoSelector() {
-	Hooks.on("dnd5e.preUseItem", ammoSelector);
+	Hooks.on(`${systemString}.preUseItem`, ammoSelector);
 }
 
 export function ammoSelector(item, config, options) {

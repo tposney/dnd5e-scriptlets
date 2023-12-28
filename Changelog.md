@@ -1,3 +1,8 @@
+### 0.24
+* Some tweaks so that scriptlets will load in sw5e. 
+* Auto roll hp has been tested and works in sw5e.
+* It seems that none of the sheet modifications work.
+
 ### 0.23
 * Fix for sometimes not correctly triggering the item use after consuming the ammo in ammoSelector
 
