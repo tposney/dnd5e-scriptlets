@@ -1,7 +1,18 @@
+### 0.25
+* Ammo selector will only fire if the missile weapon has ammunition consumption specified
+- Fix to the css to enable right click menus to work.
+
 ### 0.24
 * Some tweaks so that scriptlets will load in sw5e. 
-* Auto roll hp has been tested and works in sw5e.
-* It seems that none of the sheet modifications work.
+  * Auto roll hp has been tested and works in sw5e.
+  * Clean rolls works.
+  * Ammo selector does not know about weapon/ammo types for sw5e so won't work without changes
+  * Ammo recovery works.
+  * Feature recharge works.
+  * Legendary Action recharge works.
+  * Silent initiative works.
+  * Token resizer works.
+  * It seems that none of the sheet modifications work.
 
 ### 0.23
 * Fix for sometimes not correctly triggering the item use after consuming the ammo in ammoSelector

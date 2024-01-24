@@ -34,10 +34,12 @@
 .item.rarity-color-artifact {
   background-color: rgba(255, 225, 0, 0.3);
 }
+.preparation-unprepared *:not(#context-menu):not(#context-menu *) {
+  opacity: 45%;
+}
 
 .preparation-unprepared {
-    opacity: 45%;
-    background: #0001
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .preparation-unprepared .item-image {

@@ -25,6 +25,7 @@ export function setupAmmoSelector() {
 export function ammoSelector(item, config, options) {
 	if (game.settings.get("dnd5e-scriptlets", "ammoSelector") === "off") return true;
 	if (options.ammoSelector?.hasRun || config.ammoSelector?.hasRun) return true;
+  if (item.system.consume?.type !== "ammo") return true;
 
 	const darkMode = game.settings.get("dnd5e-scriptlets", "ammoSelector") === "onDark"; // Set to true for dark mode styling
 	// Check if the item is a weapon with ammunition property

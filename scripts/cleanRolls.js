@@ -65,7 +65,7 @@ function setupCleanAttackRolls() {
     cleanAtFields(rollConfig);
   });
   const rollHook = `${systemString}.rollAttack`
-  Hooks.on(rollHook, (iteem, roll, ammoutUpdate) => {
+  Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);  })
   return true;
@@ -78,7 +78,7 @@ function setupCleanDamageRolls() {
     cleanAtFields(rollConfig);
   });
   const rollHook = `${systemString}.rollDamage`;
-  Hooks.on(rollHook, (iteem, roll, ammoutUpdate) => {
+  Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);  })
   return true;
