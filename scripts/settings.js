@@ -2,43 +2,45 @@ import { geti18nOptions } from "./module.js";
 
 export function registerSettings() {
   game.settings.register("dnd5e-scriptlets", "cleanRolls", {
-		name: game.i18n.localize("dnd5e-scriptlets.CleanRolls.Name"),
-		hint: game.i18n.localize("dnd5e-scriptlets.CleanRolls.Hint"),
-		scope: "world",
-		default: false,
-		config: true,
-		type: Boolean,
-		requiresReload: true
-	});
-  
-	game.settings.register("dnd5e-scriptlets", "lukasSheetFilter", {
-		name: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Name"),
-		hint: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Hint"),
-		scope: "world",
-		default: false,
-		config: true,
-		type: Boolean,
-		requiresReload: false
-	});
+    name: game.i18n.localize("dnd5e-scriptlets.CleanRolls.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.CleanRolls.Hint"),
+    scope: "world",
+    default: false,
+    config: true,
+    type: Boolean,
+    requiresReload: true
+  });
+
+  if (isNewerVersion("2.9.9", game.system.version)) {
+    game.settings.register("dnd5e-scriptlets", "lukasSheetFilter", {
+      name: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Name"),
+      hint: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Hint"),
+      scope: "world",
+      default: false,
+      config: true,
+      type: Boolean,
+      requiresReload: false
+    });
+  }
 
   game.settings.register("dnd5e-scriptlets", "lukasItemRarityColors", {
-		name: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Name"),
-		hint: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Hint"),
-		scope: "world",
-		default: false,
-		config: true,
-		type: Boolean,
-		requiresReload: false
-	});
+    name: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Hint"),
+    scope: "world",
+    default: false,
+    config: true,
+    type: Boolean,
+    requiresReload: false
+  });
   game.settings.register("dnd5e-scriptlets", "lukasFadeUnprepared", {
-		name: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Name"),
-		hint: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Hint"),
-		scope: "world",
-		default: false,
-		config: true,
-		type: Boolean,
-		requiresReload: false
-	});
+    name: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Hint"),
+    scope: "world",
+    default: false,
+    config: true,
+    type: Boolean,
+    requiresReload: false
+  });
 
   game.settings.register("dnd5e-scriptlets", "ammoSelector", {
     name: game.i18n.localize("dnd5e-scriptlets.AmmoSelector.Name"),
@@ -89,7 +91,7 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
-  
+
 
   game.settings.register("dnd5e-scriptlets", "autoRollUnlinkedHP", {
     name: game.i18n.localize("dnd5e-scriptlets.AutoRollUnlinkedHP.Name"),

@@ -1,3 +1,7 @@
+### 0.26
+* dnd3.0 compatibility changes.
+* Backwards compatible with 2.4.1
+
 ### 0.25
 * Ammo selector will only fire if the missile weapon has ammunition consumption specified
 - Fix to the css to enable right click menus to work.

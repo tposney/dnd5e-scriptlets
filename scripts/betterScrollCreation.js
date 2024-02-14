@@ -6,8 +6,6 @@ export function setupBetterScrollCreation() {
 }
 
 async function createScrollFromSpell(wrapped, spell, options={}) {
-  if (!game.settings.get("dnd5e-scriptlets", "BetterScrollCreation")) 
-    return wrapped( spell, options);
   const itemData = (spell instanceof CONFIG.Item.documentClass) ? spell.toObject() : spell;
   const newOptions = mergeObject(options, {flags: itemData.flags, effects: itemData.effects}, {overwrite: false});
   return wrapped (spell, options);

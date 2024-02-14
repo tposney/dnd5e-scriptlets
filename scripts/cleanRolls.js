@@ -5,7 +5,7 @@ export function checkCleanRolls() {
   if (!globalThis.libWrapper) {
     const errorMessage = game.i18n.localize("dnd5e-scriptlets.needsLibWrapper");
     console.error(errorMessage);
-    ui.notifications?.error(errorMessage, {permanent: true});
+    ui.notifications?.error(errorMessage, { permanent: true });
   }
 }
 
@@ -23,7 +23,7 @@ export function setupCleanRolls() {
 function simplifyTerms(wrapped, terms) {
   terms = wrapped(terms);
   terms = terms.reduce((terms, term) => {
-    const prior = terms[terms.length -1];
+    const prior = terms[terms.length - 1];
     const isOperator = term instanceof OperatorTerm;
     if (isOperator && prior instanceof OperatorTerm) {
       if (prior.operator === "+") {
@@ -38,10 +38,19 @@ function simplifyTerms(wrapped, terms) {
 }
 
 function cleanParts(parts) {
-  for (let i = 1; i < parts.length; i++){
+  for (let i = 0; i < parts.length; i++) {
     let part = parts[i].trim();
-    if (part[0] === "+") parts[i] = part.slice(1);
-  };
+    if (part[0] === "+") part = part.slice(1);
+    if (part.endsWith("+")) part = part.slice(0, -1);
+    for (let j = 0; j < 2; j++) {
+
+      part = part.replace(/-\s*-/g, "+");
+      part = part.replace(/-\s*\+/g, "-");
+      part = part.replace(/\+\s*\+/g, "+");
+      part = part.replace(/\+\s*-/g, "-");
+    }
+    parts[i] = part;
+  }
   return parts;
 }
 
@@ -60,27 +69,41 @@ function cleanAtFields(rollConfig) {
 }
 function setupCleanAttackRolls() {
   const preRollHook = `${systemString}.preRollAttack`
-  Hooks.on(preRollHook,(item, rollConfig) => {
+  Hooks.on(preRollHook, (item, rollConfig) => {
     rollConfig.parts = cleanParts(rollConfig.parts);
     cleanAtFields(rollConfig);
   });
   const rollHook = `${systemString}.rollAttack`
   Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
     if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
-    else roll._formula = Roll.getFormula(roll.terms);  })
+    else roll._formula = Roll.getFormula(roll.terms);
+  })
   return true;
 }
 
 function setupCleanDamageRolls() {
-  const preRollHook = `${systemString}.preRollDamage`;
-  Hooks.on(preRollHook,(item, rollConfig) => {
-    rollConfig.parts = cleanParts(rollConfig.parts);
-    cleanAtFields(rollConfig);
-  });
+  if (isNewerVersion("2.9.99", game.system.version)) {
+    const preRollHook = `${systemString}.preRollDamage`;
+    Hooks.on(preRollHook, (item, rollConfig) => {
+      if (isNewerVersion(game.system.version, "2.9.99")) {
+        for (let singleRollConfig of rollConfig.rollConfigs) {
+          singleRollConfig.parts = cleanParts(singleRollConfig.parts);
+          cleanAtFields(singleRollConfig);
+        }
+      } else {
+        rollConfig.parts = cleanParts(rollConfig.parts);
+        cleanAtFields(rollConfig);
+      }
+    });
+  }
+
   const rollHook = `${systemString}.rollDamage`;
   Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
-    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
-    else roll._formula = Roll.getFormula(roll.terms);  })
+    if (isNewerVersion(game.system.version, "2.9.99")) {
+      roll.forEach(r => r.resetFormula());
+    } else if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    else roll._formula = Roll.getFormula(roll.terms);
+  })
   return true;
 }
 
