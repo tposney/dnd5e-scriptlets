@@ -35,7 +35,7 @@
   background-color: rgba(255, 225, 0, 0.3);
 }
 .preparation-unprepared *:not(#context-menu):not(#context-menu *) {
-  opacity: 45%;
+  opacity: 60%;
 }
 
 .preparation-unprepared {
@@ -43,7 +43,7 @@
 }
 
 .preparation-unprepared .item-image {
-    opacity: 35%;
+    opacity: 60%;
 }
 
 .dialog-button.Tiny {

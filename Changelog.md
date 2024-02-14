@@ -1,3 +1,7 @@
+### 0.27
+* Reinstate the item/spell/feture filter for dnd3.0 (only works for the legacy sheet).
+* Increate the opacity of unprepared spells so they can still be seen.
+
 ### 0.26
 * dnd3.0 compatibility changes.
 * Backwards compatible with 2.4.1

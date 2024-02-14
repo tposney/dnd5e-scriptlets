@@ -11,17 +11,15 @@ export function registerSettings() {
     requiresReload: true
   });
 
-  if (isNewerVersion("2.9.9", game.system.version)) {
-    game.settings.register("dnd5e-scriptlets", "lukasSheetFilter", {
-      name: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Name"),
-      hint: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Hint"),
-      scope: "world",
-      default: false,
-      config: true,
-      type: Boolean,
-      requiresReload: false
-    });
-  }
+  game.settings.register("dnd5e-scriptlets", "lukasSheetFilter", {
+    name: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.LukasSheetFilter.Hint"),
+    scope: "world",
+    default: false,
+    config: true,
+    type: Boolean,
+    requiresReload: false
+  });
 
   game.settings.register("dnd5e-scriptlets", "lukasItemRarityColors", {
     name: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Name"),
