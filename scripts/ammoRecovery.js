@@ -62,9 +62,7 @@ export async function restoreAmmoActors() {
 export async function restoreAmmo(combat, options, id) {
   if (!game.users?.activeGM?.isSelf) return;
   if (game.settings.get("dnd5e-scriptlets", "ammoTracker") !== true) return;
-  console.error(
-    "Doing restore ammo", combat.combatants.map(c => c.actor.name)
-  )
+  console.log("Doing restore ammo", combat.combatants.map(c => c.actor.name));
   for (let combatant of combat.combatants) {
     await restoreAmmoActor(combatant.actor)
   }

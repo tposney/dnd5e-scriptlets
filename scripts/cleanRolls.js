@@ -100,6 +100,7 @@ function setupCleanDamageRolls() {
   const rollHook = `${systemString}.rollDamage`;
   Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
     if (isNewerVersion(game.system.version, "2.9.99")) {
+      if (!(roll instanceof Array)) roll = [roll];
       roll.forEach(r => r.resetFormula());
     } else if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
