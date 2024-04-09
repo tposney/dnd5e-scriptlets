@@ -1,3 +1,8 @@
+### 0.29
+* Added putting a disposition colored dot next to the actor name in the actor directory.
+
+### 0.28
+* Fix for clean rolls
 
 ### 0.27
 * Reinstate the item/spell/feture filter for dnd3.0 (only works for the legacy sheet).

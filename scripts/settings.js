@@ -175,4 +175,14 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
+
+  game.settings.register("dnd5e-scriptlets", "ActorDispositionColors", {
+    name: game.i18n.localize("dnd5e-scriptlets.ActorDispositionColors.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.ActorDispositionColors.Hint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: false
+  });
 }

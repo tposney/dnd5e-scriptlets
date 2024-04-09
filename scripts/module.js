@@ -16,6 +16,7 @@ import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
 import { setupSocket } from "./GMAction.js";
 import { setupBetterScrollCreation } from "./betterScrollCreation.js";
 import { setupGriddedGridless } from "./griddedGridless.js";
+import { initActorDispositionColors } from "./ActorDispositionColors.js";
 
 export let systemString;
 export let systemConfig;
@@ -41,6 +42,7 @@ Hooks.once("init", async function () {
     localizeHeader = "DCC";
     break;
   }
+  initActorDispositionColors();
 });
 
 
