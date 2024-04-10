@@ -39,7 +39,7 @@ function simplifyTerms(wrapped, terms) {
 
 function cleanParts(parts) {
   for (let i = 0; i < parts.length; i++) {
-    let part = parts[i].trim();
+    let part = `${parts[i]}`.trim();
     if (part[0] === "+") part = part.slice(1);
     if (part.endsWith("+")) part = part.slice(0, -1);
     for (let j = 0; j < 2; j++) {

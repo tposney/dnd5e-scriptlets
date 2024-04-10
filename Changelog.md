@@ -1,3 +1,6 @@
+### 0.30
+* Fix for clean rolls and dnd5e v3.1.2
+
 ### 0.29
 * Added putting a disposition colored dot next to the actor name in the actor directory.
 
