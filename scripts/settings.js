@@ -185,4 +185,38 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
+
+  game.settings.register("dnd5e-scriptlets", "AutoRemoveItems", {
+    name: game.i18n.localize("dnd5e-scriptlets.AutoRemoveItems.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AutoRemoveItems.Hint"),
+    scope: "world",
+    type: String,
+    choices: {
+      "none": "Do not auto remove",
+      "removeWorld": "Auto remove from world containers",
+    },
+    default: "none",
+    config: true,
+    requiresReload: false
+  });
+
+  game.settings.register("dnd5e-scriptlets", "AutoRemoveItemsFromActor", {
+    name: game.i18n.localize("dnd5e-scriptlets.AutoRemoveItemsFromActor.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AutoRemoveItemsFromActor.Hint"),
+    scope: "world",
+    type: String,
+    choices: {
+      "none": "Do not auto remove",
+      "removeAll": "Auto remove from any actor",
+      "removeCharacter": "Auto remove from characters",
+      "removeNPC": "Auto remove from npcs",
+      "removeGroup": "Auto remove from group actors",
+      "removeCharacterGroup": "Auto remove from characters & groups",
+      "removeNPCGroup": "Auto remove from npcs & groups",
+      "removeCharacterNPC": "Auto remove from characters & npcs",
+    },
+    default: "none",
+    config: true,
+    requiresReload: false
+  });
 }

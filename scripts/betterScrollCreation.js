@@ -7,6 +7,6 @@ export function setupBetterScrollCreation() {
 
 async function createScrollFromSpell(wrapped, spell, options={}) {
   const itemData = (spell instanceof CONFIG.Item.documentClass) ? spell.toObject() : spell;
-  const newOptions = mergeObject(options, {flags: itemData.flags, effects: itemData.effects}, {overwrite: false});
+  const newOptions = foundry.utils.mergeObject(options, {flags: itemData.flags, effects: itemData.effects}, {overwrite: false});
   return wrapped (spell, options);
 }

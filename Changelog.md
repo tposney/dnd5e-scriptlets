@@ -1,3 +1,8 @@
+### 0.31
+* V12 compatibility release
+* Option to remove items when dragged from an actor or world container.
+  - Supports Group Actors, NPCs and Characters, so you can use a Group Actor to hold party inventory then drag and drop it and have it removed from party inventory.
+  - Option to remove items from World Containers when dropped to an actor.
 ### 0.30
 * Fix for clean rolls and dnd5e v3.1.2
 

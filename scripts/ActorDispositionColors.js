@@ -55,6 +55,6 @@ function colorActorDisposition() {
 export function initActorDispositionColors() {
   Hooks.on("renderActorDirectory", colorActorDisposition);
   Hooks.on("updateActor", (actor, updates, options, userId) => {
-   if (getProperty(updates, "prototypeToken.disposition") !== undefined) colorActorDisposition();
+   if (foundry.utils.getProperty(updates, "prototypeToken.disposition") !== undefined) colorActorDisposition();
   });
 };

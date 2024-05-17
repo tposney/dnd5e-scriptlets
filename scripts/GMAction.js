@@ -4,6 +4,8 @@ export function setupSocket() {
   socketlibSocket.register("test", _testMessage);
   socketlibSocket.register("updateActorItems", updateActorItems);
   socketlibSocket.register("unsetFlag", unsetFlag);
+  socketlibSocket.register("deleteItem", deleteItem);
+  socketlibSocket.register("updateItem", updateItem);
 }
 
 export async function _testMessage() {
@@ -20,4 +22,16 @@ export async function unsetFlag(actorUuid, scope, key) {
   const actor = fromUuidSync(actorUuid);
   if (!actor) return;
   await actor.unsetFlag(scope, key);
+}
+
+export async function deleteItem(itemUuid) {
+  const item = fromUuidSync(itemUuid);
+  if (!item) return;
+  return item.delete();
+}
+
+export async function updateItem(itemUuid, updates) {
+  const item = fromUuidSync(itemUuid);
+  if (!item) return;
+  return item.update(updates);
 }

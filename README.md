@@ -52,3 +52,7 @@ Support silent initiative rolls - if enabled initiative rolls are not reported t
 
 ## Update Created Actors effect origins.
 When creating/importing an actor the origins of the effects may be incorrect. This feature attempts to correct them.
+
+## Item Drag Drop.
+When dragging an item from an actor or world container you can specify to delete the item on the completion of the drop. Configurable in settings.
+

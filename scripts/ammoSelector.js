@@ -30,7 +30,7 @@ export function ammoSelector(item, config, options) {
   const darkMode = game.settings.get("dnd5e-scriptlets", "ammoSelector") === "onDark"; // Set to true for dark mode styling
   // Check if the item is a weapon with ammunition property
   let hasAmmo;
-  if (isNewerVersion(game.system.version, "2.9.99")) {
+  if (foundry.utils.isNewerVersion(game.system.version, "2.9.99")) {
     hasAmmo = item.system.properties.has("amm") && item.type == "weapon";
   } else {
     hasAmmo = item.system.properties?.amm === true && item.type == "weapon";
@@ -38,20 +38,20 @@ export function ammoSelector(item, config, options) {
   }
   if (hasAmmo) {
     let weaponType = item.system.baseItem;
-    if (isNewerVersion(game.system.version, "2.9.99")) {
+    if (foundry.utils.isNewerVersion(game.system.version, "2.9.99")) {
       weaponType = item.system.type.baseItem;
     }
     if (!weaponType || !(weaponType in weaponToAmmo)) {
       // do some sort of log message
-      setProperty(options, "ammoSelector.hasRun", true);
-      setProperty(config, "ammoSelector.hasRun", true);
+      foundry.utils.setProperty(options, "ammoSelector.hasRun", true);
+      foundry.utils.setProperty(config, "ammoSelector.hasRun", true);
       return true;
     }
     const ammoType = weaponToAmmo[weaponType];
     // Filter available ammunition based on weapon type
     let allAmmo;
     let availableAmmo;
-    if (isNewerVersion(game.system.version, "2.9.99" )) {
+    if (foundry.utils.isNewerVersion(game.system.version, "2.9.99" )) {
       allAmmo = item.parent.itemTypes.consumable?.filter(item => 
         item.name.toLowerCase().includes(ammoType)
       );
@@ -68,8 +68,8 @@ export function ammoSelector(item, config, options) {
 
     // Bypass the dialog if there's only one ammo type left and it's already set on the weapon
     if (availableAmmo.length === 1 && item.system.consume.target === availableAmmo[0].id) {
-      setProperty(options, "ammoSelector.hasRun", true);
-      setProperty(config, "ammoSelector.hasRun", true);
+      foundry.utils.setProperty(options, "ammoSelector.hasRun", true);
+      foundry.utils.setProperty(config, "ammoSelector.hasRun", true);
       return true;
     }
     if (availableAmmo.length === 0) {
@@ -159,11 +159,11 @@ export function ammoSelector(item, config, options) {
           { id }
         );
       }
-      setProperty(options, "ammoSelector.hasRun", true);
-      setProperty(config, "ammoSelector.hasRun", true);
+      foundry.utils.setProperty(options, "ammoSelector.hasRun", true);
+      foundry.utils.setProperty(config, "ammoSelector.hasRun", true);
 
-      setProperty(options, "workflowOptions.lateTargeting", "none");
-      setProperty(options, "workflowOptions.targetConfirmation", "none");
+      foundry.utils.setProperty(options, "workflowOptions.lateTargeting", "none");
+      foundry.utils.setProperty(options, "workflowOptions.targetConfirmation", "none");
       if (allowRoll) item.use(config, options);
     };
     doDialog();

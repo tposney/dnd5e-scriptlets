@@ -59,7 +59,7 @@ function cleanAtFields(rollConfig) {
     const stringPart = part.trim();
     if (stringPart[0] !== "@") continue;
     const valueString = stringPart.slice(1);
-    let value = getProperty(rollConfig.data, valueString);
+    let value = foundry.utils.getProperty(rollConfig.data, valueString);
     if (typeof value !== "string") continue;
     while (value.trim()[0] === "+") {
       value = value.trim().slice(1);
@@ -75,17 +75,17 @@ function setupCleanAttackRolls() {
   });
   const rollHook = `${systemString}.rollAttack`
   Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
-    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    if (foundry.utils.isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   })
   return true;
 }
 
 function setupCleanDamageRolls() {
-  if (isNewerVersion("2.9.99", game.system.version)) {
+  if (foundry.utils.isNewerVersion("2.9.99", game.system.version)) {
     const preRollHook = `${systemString}.preRollDamage`;
     Hooks.on(preRollHook, (item, rollConfig) => {
-      if (isNewerVersion(game.system.version, "2.9.99")) {
+      if (foundry.utils.isNewerVersion(game.system.version, "2.9.99")) {
         for (let singleRollConfig of rollConfig.rollConfigs) {
           singleRollConfig.parts = cleanParts(singleRollConfig.parts);
           cleanAtFields(singleRollConfig);
@@ -99,10 +99,10 @@ function setupCleanDamageRolls() {
 
   const rollHook = `${systemString}.rollDamage`;
   Hooks.on(rollHook, (item, roll, ammoutUpdate) => {
-    if (isNewerVersion(game.system.version, "2.9.99")) {
+    if (foundry.utils.isNewerVersion(game.system.version, "2.9.99")) {
       if (!(roll instanceof Array)) roll = [roll];
       roll.forEach(r => r.resetFormula());
-    } else if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    } else if (foundry.utils.isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   })
   return true;
@@ -117,7 +117,7 @@ function setupCleanSkillRoll() {
   });
   const rollHook = `${systemString}.rollSkill`;
   Hooks.on(rollHook, (actor, roll, skillId) => {
-    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    if (foundry.utils.isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   });
 
@@ -131,7 +131,7 @@ function setupCleanAbiityTest() {
   });
   const rollHook = `${systemString}.rollAbilityTest`;
   Hooks.on(rollHook, (actor, roll, skillId) => {
-    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    if (foundry.utils.isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   });
   return true;
@@ -145,7 +145,7 @@ function setupCleanAbiitySave() {
   });
   const rollHook = `${systemString}.rollAbilitySave`;
   Hooks.on(rollHook, (actor, roll, skillId) => {
-    if (isNewerVersion(game.version, "11.0")) roll.resetFormula();
+    if (foundry.utils.isNewerVersion(game.version, "11.0")) roll.resetFormula();
     else roll._formula = Roll.getFormula(roll.terms);
   });
   return true;

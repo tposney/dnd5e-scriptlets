@@ -18,7 +18,7 @@ export function setupAutoRollUnlinkedHP() {
       sw5e: "system.attributes.hp.formula"
     };
 
-    const formula = getProperty(actor, hpProperties[systemString]);
+    const formula = foundry.utils.getProperty(actor, hpProperties[systemString]);
     if (!hpProperties[systemString]) return undefined;
 
     if (formula) {
@@ -26,12 +26,12 @@ export function setupAutoRollUnlinkedHP() {
       r.roll({ async: false });
       // Make sure hp is at least 1
       const val = Math.max(r.total, 1);
-      if (isNewerVersion(game.version, "11.0")) {
-        setProperty(data, "delta.system.attributes.hp.value", val);
-        setProperty(data, "delta.system.attributes.hp.max", val);
+      if (foundry.utils.isNewerVersion(game.version, "11.0")) {
+        foundry.utils.setProperty(data, "delta.system.attributes.hp.value", val);
+        foundry.utils.setProperty(data, "delta.system.attributes.hp.max", val);
       } else {
-        setProperty(data, "actorData.system.attributes.hp.value", val);
-        setProperty(data, "actorData.system.attributes.hp.max", val);
+        foundry.utils.setProperty(data, "actorData.system.attributes.hp.value", val);
+        foundry.utils.setProperty(data, "actorData.system.attributes.hp.max", val);
       }
       if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "rollOnly") return;
       Hooks.once("createToken", (token, options, userId) => {
