@@ -17,7 +17,19 @@ const weaponToAmmo = {
   blowgun: "needle",
   scattergun: "shot",
 };
-
+const ammoSubtypes = {
+  longbow: "arrow",
+  shortbow: "arrow",
+  lightcrossbow: "crossbowBolt",
+  handcrossbow: "crossbowBolt",
+  heavycrossbow: "crossbowBolt",
+  sling: "slingBullet",
+  musket: "bullet",
+  pistol: "bullet",
+  revolver: "bullet",
+  blowgun: "blowgunNeedle",
+  scattergun: "shot",
+};
 export function setupAmmoSelector() {
   Hooks.on(`${systemString}.preUseItem`, ammoSelector);
 }
@@ -41,17 +53,30 @@ export function ammoSelector(item, config, options) {
     if (foundry.utils.isNewerVersion(game.system.version, "2.9.99")) {
       weaponType = item.system.type.baseItem;
     }
-    if (!weaponType || !(weaponType in weaponToAmmo)) {
+    if (!weaponType || !((weaponType in weaponToAmmo) || (weaponType in ammoSubtypes))) {
       // do some sort of log message
       foundry.utils.setProperty(options, "ammoSelector.hasRun", true);
       foundry.utils.setProperty(config, "ammoSelector.hasRun", true);
       return true;
     }
-    const ammoType = weaponToAmmo[weaponType];
+    let ammoType = ammoSubtypes[weaponType];
+    let oldAmmoType = weaponToAmmo[weaponType];
     // Filter available ammunition based on weapon type
     let allAmmo;
     let availableAmmo;
-    if (foundry.utils.isNewerVersion(game.system.version, "2.9.99" )) {
+    if (foundry.utils.isNewerVersion(game.system.version, "3.1.0" )) {
+      allAmmo = item.parent.itemTypes.consumable?.filter(item => {
+        if (item.system.type?.subtype === ammoType) {
+          return true;
+        }
+        else if (item.name.toLowerCase().includes(oldAmmoType)) {
+          console.warn(`dnd5e-scriptlets | AmmoSelector: ${item.parent?.name}: ${item.name} Ammo does not have subtype set correctly, using name instead.`)
+          return true;
+        }
+      });
+      availableAmmo = allAmmo.filter(item => item.system.quantity > 0);
+    }
+    else if (foundry.utils.isNewerVersion(game.system.version, "2.9.99" )) {
       allAmmo = item.parent.itemTypes.consumable?.filter(item => 
         item.name.toLowerCase().includes(ammoType)
       );

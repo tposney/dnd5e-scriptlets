@@ -3,7 +3,7 @@ export function setupUpdateCreatedOrigins() {
   Hooks.on("createActor", createActorHook);
   Hooks.on("createToken", createTokenHook);
   Hooks.on("createItem", createItemHook);
-  globalThis.dnd5eScriptlets.api = mergeObject(globalThis.dnd5eScriptlets.api, {
+  globalThis.dnd5eScriptlets.api = foundry.utils.mergeObject(globalThis.dnd5eScriptlets.api, {
     fixActorOrigins,
     fixTokenOrigins,
     fixActorOriginsForAllActors,

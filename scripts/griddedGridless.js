@@ -3,7 +3,7 @@ export function setupGriddedGridless() {
   if (game.release.generation < 12) {
   if (libWrapper) libWrapper.register("dnd5e-scriptlets", "BaseGrid.prototype.measureDistances", measureDistances, "MIXED");
   } else {
-    if (libWrapper) libWrapper.register("dnd5e-scriptlets", "game.grid.BaseGrid.prototype.measureDistances", measureDistances, "MIXED");
+    if (libWrapper) libWrapper.register("dnd5e-scriptlets", "canvas.grid.measureDistances", measureDistances, "MIXED");
   }
 }
 

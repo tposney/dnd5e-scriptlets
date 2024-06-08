@@ -4,7 +4,7 @@ import { systemString } from "./module.js";
 export function setupAmmoRecovery() {
   Hooks.on(`${systemString}.rollAttack`, ammoUsage);
   Hooks.on("deleteCombat", restoreAmmo);
-  globalThis.dnd5eScriptlets.api =  mergeObject(globalThis.dnd5eScriptlets.api, {
+  globalThis.dnd5eScriptlets.api =  foundry.utils.mergeObject(globalThis.dnd5eScriptlets.api, {
     restoreAmmoActor, 
     restoreAmmoActors
   });

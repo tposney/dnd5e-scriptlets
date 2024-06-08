@@ -14,7 +14,6 @@ async function _actorSheetOnDropItem(wrapped, event, data) {
   const containerRemove = game.settings.get("dnd5e-scriptlets", "AutoRemoveItems");
   if (actorRemove === "none" && containerRemove === "none") return wrapped(event, data);
 
-  console.error(this, event, data);
   // If dropping an item to a new actor we should delete the container id
   return wrapped(event, data).then(result => {
       //@ts-expect-error

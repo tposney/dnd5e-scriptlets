@@ -56,3 +56,4 @@ When creating/importing an actor the origins of the effects may be incorrect. Th
 ## Item Drag Drop.
 When dragging an item from an actor or world container you can specify to delete the item on the completion of the drop. Configurable in settings.
 
+Scriptlets uses icons from the excellent dfreds-convenient-effects which

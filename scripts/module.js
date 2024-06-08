@@ -27,7 +27,7 @@ export let libWrapper;
 Hooks.once("init", async function () {
   libWrapper = globalThis.libWrapper;
 	console.log("dnd5e-scriptlets | doing init setup");
-	setProperty(globalThis, "dnd5eScriptlets.api", {});
+	foundry.utils.setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
 	setupTokenResizer();
   systemString = game.system.id;
