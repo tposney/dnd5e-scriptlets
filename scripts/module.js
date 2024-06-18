@@ -18,6 +18,7 @@ import { setupBetterScrollCreation } from "./betterScrollCreation.js";
 import { setupGriddedGridless } from "./griddedGridless.js";
 import { initActorDispositionColors } from "./ActorDispositionColors.js";
 import { setupContainerHelpers } from "./containerHelper.js";
+import { setupEnableTokenDynamicRing } from "./enableTokenDynamicRing.js";
 
 export let systemString;
 export let systemConfig;
@@ -74,6 +75,7 @@ Hooks.once("ready", async function () {
   setupBetterScrollCreation();
   setupGriddedGridless();
   setupContainerHelpers();
+  setupEnableTokenDynamicRing();
   const module = game.modules.get("dnd5e-scriptlets");
   if (module) {
     module.api = globalThis.dnd5eScriptlets.api;

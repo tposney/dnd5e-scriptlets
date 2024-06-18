@@ -200,6 +200,16 @@ export function registerSettings() {
     requiresReload: false
   });
 
+  game.settings.register("dnd5e-scriptlets", "EnableTokenDynamicRing", {
+    name: game.i18n.localize("dnd5e-scriptlets.EnableTokenDynamicRing.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.EnableTokenDynamicRing.Hint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: false
+  });
+
   game.settings.register("dnd5e-scriptlets", "AutoRemoveItemsFromActor", {
     name: game.i18n.localize("dnd5e-scriptlets.AutoRemoveItemsFromActor.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.AutoRemoveItemsFromActor.Hint"),

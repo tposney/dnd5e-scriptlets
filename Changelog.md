@@ -1,3 +1,6 @@
+### 0.33
+* Added feature to automatically enable dynamic token ring when a token is added to a scene.
+
 ### 0.32
 * Process item subtypes for ammunition selector. The current solution using name will till work but throw a warning. Eventually it will be disabled.
 * Fix a few compatibility warnings

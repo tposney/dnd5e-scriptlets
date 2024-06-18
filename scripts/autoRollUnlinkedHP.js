@@ -7,7 +7,7 @@ export function setupAutoRollUnlinkedHP() {
 
     const hpRoll = {};
     _rollHP(hpRoll, actor);
-    if (!isEmpty(hpRoll)) tokenDocument.updateSource(hpRoll);
+    if (!foundry.utils.isEmpty(hpRoll)) tokenDocument.updateSource(hpRoll);
     return true;
   });
 

@@ -14,7 +14,7 @@ export function ammoUsage(item, roll, ammoUpdates) {
   try {
     if (game.settings.get("dnd5e-scriptlets", "ammoTracker") !== true) return;
     const actor = item.parent;
-    const storedQuantities = duplicate(foundry.utils.getProperty(actor, "flags.dnd5e-scriptlets.ammoQuantities") ?? {});
+    const storedQuantities = foundry.utils.duplicate(foundry.utils.getProperty(actor, "flags.dnd5e-scriptlets.ammoQuantities") ?? {});
     if (ammoUpdates) {
       for (let ammoUpdate of ammoUpdates) {
         const ammoItem = actor.items.get(ammoUpdate._id);

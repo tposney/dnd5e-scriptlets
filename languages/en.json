@@ -52,5 +52,7 @@
   "dnd5e-scriptlets.AutoRemoveItemsFromActor.Name": "Remove dragged items from actors",
   "dnd5e-scriptlets.AutoRemoveItemsFromActor.Hint": "Automatically remove items from an actor when dragged from the actor's inventory to another actor/container",
   "dnd5e-scriptlets.AutoRemoveItems.Name": "Remove items from world containers",
-  "dnd5e-scriptlets.AutoRemoveItems.Hint": "Automatically remove items from a world container when dragged to the an actor/container"
+  "dnd5e-scriptlets.AutoRemoveItems.Hint": "Automatically remove items from a world container when dragged to the an actor/container",
+  "dnd5e-scriptlets.EnableTokenDynamicRing.Name": "Enable Token Dynamic Ring",
+  "dnd5e-scriptlets.EnableTokenDynamicRing.Hint": "When a token is placed on the canvas set the token dynamic ring enabled"
 }
