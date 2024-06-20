@@ -1,3 +1,8 @@
+### 0.34
+* Support choosing a token ring color/background color for auto ring enabling.
+* Auto roll npc hit points now works in v12.
+* Removed dependency on warpgate for token resizing.Turns
+
 ### 0.33
 * Added feature to automatically enable dynamic token ring when a token is added to a scene.
 

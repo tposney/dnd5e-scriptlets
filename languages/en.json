@@ -26,7 +26,6 @@
   "dnd5e-scriptlets.AutoRollUnlinkedHP.Hint": "Auto roll unlinked token HP on canvas add",
   "dnd5e-scriptlets.TokenResizer.Name": "Token Resizer",
   "dnd5e-scriptlets.TokenResizer.Hint": "Adds a resize button to token controls that allows resizing of selected tokens",
-  "dnd5e-scriptlets.TokenResizerWarpgateError": "DND5E-Scriptlets | Token Resizer requires warpgate to be installed and active - Token Resizer disabled",
   "dnd5e-scriptlets.NoTokenSelected": "DND5E-Scriptlets | Token Resizer: Select at least one token to resize",
   "dnd5e-scriptlets.CleanRolls.Name": "Clean Rolls",
   "dnd5e-scriptlets.CleanRolls.Hint": "Remove duplicate '+' and '-' from dnd5e rolls",
@@ -54,5 +53,7 @@
   "dnd5e-scriptlets.AutoRemoveItems.Name": "Remove items from world containers",
   "dnd5e-scriptlets.AutoRemoveItems.Hint": "Automatically remove items from a world container when dragged to the an actor/container",
   "dnd5e-scriptlets.EnableTokenDynamicRing.Name": "Enable Token Dynamic Ring",
-  "dnd5e-scriptlets.EnableTokenDynamicRing.Hint": "When a token is placed on the canvas set the token dynamic ring enabled"
+  "dnd5e-scriptlets.EnableTokenDynamicRing.Hint": "When a token is placed on the canvas set the token dynamic ring enabled",
+  "dnd5e-scriptlets.EnableTokenDynamicRingColour.Name": "Token Dynamic Ring Colour",
+  "dnd5e-scriptlets.EnableTokenDynamicRingBackgroundColour.Name": "Token Dynamic Ring Background Colour"
 }

@@ -6,7 +6,7 @@ import { setupLukasFadeUnprepared } from "./fade-unprepared.js";
 import { setupLegendaryRecharge } from "./legendaryRecharge.js";
 import { setupAutoItemRecharge } from "./autoItemRecharge.js";
 import { setupAutoRollUnlinkedHP } from "./autoRollUnlinkedHP.js";
-import { checkTokenResizer, setupTokenResizer } from "./tokenResizer.js";
+import { setupTokenResizer } from "./tokenResizer.js";
 import { setupCleanRolls, checkCleanRolls } from "./cleanRolls.js";
 import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
 import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
@@ -27,10 +27,10 @@ export let libWrapper;
 
 Hooks.once("init", async function () {
   libWrapper = globalThis.libWrapper;
-	console.log("dnd5e-scriptlets | doing init setup");
-	foundry.utils.setProperty(globalThis, "dnd5eScriptlets.api", {});
+  console.log("dnd5e-scriptlets | doing init setup");
+  foundry.utils.setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
-	setupTokenResizer();
+  setupTokenResizer();
   systemString = game.system.id;
   systemConfig = game.system.config;
   switch (systemString) {
@@ -40,9 +40,9 @@ Hooks.once("init", async function () {
     case "sw5e":
       localizeHeader = "SW5E";
       break;
-    case "dcc": 
-    localizeHeader = "DCC";
-    break;
+    case "dcc":
+      localizeHeader = "DCC";
+      break;
   }
   initActorDispositionColors();
 });
@@ -51,22 +51,21 @@ Hooks.once("init", async function () {
 Hooks.once("setup", () => {
   registerSettings();
 
-	console.log("dnd5e-scriptlets | doing setup");
-	setupCleanRolls();
+  console.log("dnd5e-scriptlets | doing setup");
+  setupCleanRolls();
 });
 
 Hooks.once("ready", async function () {
-	console.log("dnd5e-scriptlets | Doing ready setup");
+  console.log("dnd5e-scriptlets | Doing ready setup");
   setupSocket();
-	setupLukasCharSheetFilter();
-	setupLukasItemRarityColors();
-	setupLukasFadeUnprepared();
-	setupAmmoSelector();
-	setupLegendaryRecharge();
-	setupAutoItemRecharge();
-	setupAutoRollUnlinkedHP();
-	checkTokenResizer();
-	checkCleanRolls();
+  setupLukasCharSheetFilter();
+  setupLukasItemRarityColors();
+  setupLukasFadeUnprepared();
+  setupAmmoSelector();
+  setupLegendaryRecharge();
+  setupAutoItemRecharge();
+  setupAutoRollUnlinkedHP();
+  checkCleanRolls();
   setupAlternativeAdvantage();
   setupCollapsibleActorSections();
   setupAmmoRecovery();

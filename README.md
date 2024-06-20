@@ -32,7 +32,7 @@ When enabled at the start of an actors turn items with a recharge will have thei
 When enabled legendary actions will be reset at the start of the actors turn.
 
 ## Token Resizer
-When enabled adds a resizer icon to the token controls sidebar to allow setting selected tokens size. requires warpgate.
+When enabled adds a resizer icon to the token controls sidebar to allow setting selected tokens size. 
 
 ## Roll Unlinked Toeken HP
 When enabled an unlinked token dropped to the canvas will have it's Hp auto rolled.
@@ -55,5 +55,8 @@ When creating/importing an actor the origins of the effects may be incorrect. Th
 
 ## Item Drag Drop.
 When dragging an item from an actor or world container you can specify to delete the item on the completion of the drop. Configurable in settings.
+
+## Enable token dynamic ring
+Enable token dynamic ring when creating a token. Allows you to set a default ring whenever a token is created. Can also specify ring and background color.
 
 Scriptlets uses icons from the excellent dfreds-convenient-effects which
