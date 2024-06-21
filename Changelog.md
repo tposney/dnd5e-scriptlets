@@ -1,3 +1,6 @@
+### 0.35
+* support token ring color/background in v11.
+
 ### 0.34
 * Support choosing a token ring color/background color for auto ring enabling.
 * Auto roll npc hit points now works in v12.

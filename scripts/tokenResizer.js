@@ -17,7 +17,7 @@ export function setupTokenResizer() {
         onClick: () => {
           if (game.canvas.tokens.controlled.length < 1) {
             const warningMessage = game.i18n.localize("dnd5e-scriptlets.NoTokenSelected");
-            ui.notifications.warn(warningMessages);
+            ui.notifications.warn(warningMessage);
             return;
           }
           queryResizeTokens(game.canvas.tokens.controlled);
