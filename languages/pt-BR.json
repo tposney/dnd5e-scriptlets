@@ -26,7 +26,6 @@
   "dnd5e-scriptlets.AutoRollUnlinkedHP.Hint": "Rolar PV automaticamente de tokens não-linkados ao adicioná-lo à cena.",
   "dnd5e-scriptlets.TokenResizer.Name": "Redimensionar Token",
   "dnd5e-scriptlets.TokenResizer.Hint": "Adiciona um botão de redimensionamento aos controles de token, que permite redimensionar os tokens selecionados.",
-  "dnd5e-scriptlets.TokenResizerWarpgateError": "DND5E-Scriptlets | O módulo Warpgate deve estar instalado e ativo - Redimensionar Token desabilitado",
   "dnd5e-scriptlets.NoTokenSelected": "DND5E-Scriptlets | Redimensionar Token: Selecione ao menos um token para redimensionar",
   "dnd5e-scriptlets.CleanRolls.Name": "Rolagens Limpas",
   "dnd5e-scriptlets.CleanRolls.Hint": "Remove os '+' e '-' duplicados das rolagens de D&D5e.",
@@ -52,5 +51,9 @@
   "dnd5e-scriptlets.AutoRemoveItemsFromActor.Name": "Remover Itens Tirados de Recipientes",
   "dnd5e-scriptlets.AutoRemoveItemsFromActor.Hint": "Configure para remover automaticamente itens retirados de um recipiente para a ficha de um ator.",
   "dnd5e-scriptlets.AutoRemoveItems.Name": "Remover Itens de Recipientes do Mundo",
-  "dnd5e-scriptlets.AutoRemoveItems.Hint": "Automaticamente remove itens de um recipiente do mundo, quando arrastado para um ator/recipiente."
+  "dnd5e-scriptlets.AutoRemoveItems.Hint": "Automaticamente remove itens de um recipiente do mundo, quando arrastado para um ator/recipiente.",
+  "dnd5e-scriptlets.EnableTokenDynamicRing.Name": "Habilitar Anel Dinâmico de Token",
+  "dnd5e-scriptlets.EnableTokenDynamicRing.Hint": "Quando um token é colocado na cena, habilita a configuração do anel dinâmico de token.",
+  "dnd5e-scriptlets.EnableTokenDynamicRingColour.Name": "Cor do Anel Dinâmico de Token",
+  "dnd5e-scriptlets.EnableTokenDynamicRingBackgroundColour.Name": "Cor de Fundo do Anel Dinâmico de Token"
 }
