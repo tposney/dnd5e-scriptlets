@@ -30,7 +30,7 @@ export function registerSettings() {
     type: Boolean,
     requiresReload: false
   });
-  
+
   game.settings.register("dnd5e-scriptlets", "lukasFadeUnprepared", {
     name: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.LukasFadeUnprepared.Hint"),
@@ -238,7 +238,7 @@ export function registerSettings() {
     scope: "world",
     type: String,
     default: "None",
-    choices: colorList.reduce((acc, c) => { acc[c] = c; return acc }, { "None": "None" }),
+    choices: colorList.reduce((acc, c) => { acc[c] = c; return acc }, { "None": "None", "Player Color": "Player Color" }),
     config: true,
     requiresReload: false
   });

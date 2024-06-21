@@ -1,3 +1,7 @@
+### 0.36
+* Added option for dynamic ring color to match the actor's owner's color rather than a specified color.
+* Fix for incorrectly overriding token settings for ring color in v11
+
 ### 0.35
 * support token ring color/background in v11.
 
