@@ -1,3 +1,6 @@
+### 0.37
+* Fix for unlinked summoned creatures not rolling hp correctly when summoned via an item.
+
 ### 0.36
 * Added option for dynamic ring color to match the actor's owner's color rather than a specified color.
 * Fix for incorrectly overriding token settings for ring color in v11

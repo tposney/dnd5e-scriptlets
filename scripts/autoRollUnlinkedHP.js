@@ -6,20 +6,29 @@ export function setupAutoRollUnlinkedHP() {
       if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return;
       const actor = tokenDocument.actor;
       if (!actor || tokenDocument.actorLink) return true;
-        const hpRoll = {};
+      const hpRoll = {};
       _rollHPV12(actor);
     });
   } else {
     Hooks.on("preCreateToken", (tokenDocument, data, options, userId) => {
-    if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return;
-    const actor = tokenDocument.actor;
-    if (!actor || data.actorLink) return true;
+      if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return;
+      const actor = tokenDocument.actor;
+      if (!actor || data.actorLink) return true;
       const hpRoll = {};
       _rollHPV11(data, actor);
       if (!foundry.utils.isEmpty(hpRoll)) tokenDocument.updateSource(hpRoll);
+      return true;
+    });
+
+  }
+
+  Hooks.on("dnd5e.preSummonToken", (item, profile, tokenData, options) => {
+    if (tokenData?.actorUpdates?.["system.attributes.hp.max"]) {
+      const hpBonus = tokenData?.actorUpdates?.["system.attributes.hp.max"] - tokenData.actor?.system.attributes.hp.value;
+      tokenData.actorUpdates["system.attributes.hp.formula"] = `${(tokenData.actor.system.attributes.hp.formula ?? "0")} + ${hpBonus}`;
+    }
     return true;
-  });
-}
+  })
   const hpProperties = {
     dnd5e: "system.attributes.hp.formula",
     dcc: "system.attributes.hitDice.value",
