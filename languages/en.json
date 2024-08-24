@@ -18,7 +18,11 @@
     "off": "Disable",
     "silent": "Recharge without chat message",
     "whisper": "Recharge with chat message to GM only",
-    "chatter": "Recharge with chat message"
+    "chatter": "Recharge with chat message",
+    "silentEnd": "Recharge without chat message - at end of turn",
+    "whisperEnd": "Recharge with chat message to GM only - at end of turn",
+    "chatterEnd": "Recharge with chat message - at end of turn"
+
   },
   "dnd5e-scriptlets.LegendaryRecharge.Name": "Recharge legendary actions",
   "dnd5e-scriptlets.LegendaryRecharge.Hint": "Auto recharge legendary actions on turn start",

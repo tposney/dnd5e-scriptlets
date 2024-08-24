@@ -15,31 +15,30 @@ async function _actorSheetOnDropItem(wrapped, event, data) {
   if (actorRemove === "none" && containerRemove === "none") return wrapped(event, data);
 
   // If dropping an item to a new actor we should delete the container id
-  return wrapped(event, data).then(result => {
-      //@ts-expect-error
-      const item = fromUuidSync(data.uuid);
-      if (result?.length > 0 && item) {
-        const resItem = result[0];
+  const result = await wrapped(event, data);
+  //@ts-expect-error
+  const item = fromUuidSync(data.uuid);
+  if (result?.length > 0 && item) {
+    const resItem = result[0];
 
-      if (item?.parent instanceof Actor && resItem.parent !== item.parent) { // dropped from an actor
-        if (actorRemove === "removeAll" 
-          || (item.parent.type === "character" && ["removeCharacter", "removeCharacterGroup", "removeCharacterNPC"].includes(actorRemove))
-          || (item.parent.type === "npc" && ["removeNPC", "removeCharacterNPC", "removeNPCGroup"].includes(actorRemove))
-          || (item.parent.type === "group" && ["removeGroup", "removeCharacterGroup", "removeNPCGroup"].includes(actorRemove))) { // dropped from inventory
-          if (item.isOwner) item.delete();
-          else socketlibSocket.executeAsGM("deleteItem", item.uuid);
-        }
-      } else if (!item.parent && item.container && resItem.parent instanceof Actor) { // dropped from a world container to an actor
-        if (["removeWorld"].includes(containerRemove)) {
-          if (item.isOwner) item.delete();
-          else socketlibSocket.executeAsGM("deleteItem", item.uuid);
-        }
+    if (item?.parent instanceof Actor && resItem.parent !== item.parent) { // dropped from an actor
+      if (actorRemove === "removeAll"
+        || (item.parent.type === "character" && ["removeCharacter", "removeCharacterGroup", "removeCharacterNPC"].includes(actorRemove))
+        || (item.parent.type === "npc" && ["removeNPC", "removeCharacterNPC", "removeNPCGroup"].includes(actorRemove))
+        || (item.parent.type === "group" && ["removeGroup", "removeCharacterGroup", "removeNPCGroup"].includes(actorRemove))) { // dropped from inventory
+        if (item.isOwner) await item.delete({ deleteContents: true });
+        else await socketlibSocket.executeAsGM("deleteItem", item.uuid, { deleteContents: true });
       }
-      // fix for dnd not clearing container on item drop
-      if (!(this instanceof game.system.applications.item.ContainerSheet && item.systen.container)) 
-        resItem.update({"system.container": null})
+    } else if (!item.parent && item.container && resItem.parent instanceof Actor) { // dropped from a world container to an actor
+      if (["removeWorld"].includes(containerRemove)) {
+        if (item.isOwner) await item.delete({ deleteContents: true });
+        else await socketlibSocket.executeAsGM("deleteItem", item.uuid, { deleteContents: true });
+      }
     }
-  });
+    // fix for dnd not clearing container on item drop
+    if (!(this instanceof game.system.applications.item.ContainerSheet && item.systen.container))
+      resItem.update({ "system.container": null })
+  }
 }
 
 async function _containerSheetOnDropItem(wrapped, event, data) {

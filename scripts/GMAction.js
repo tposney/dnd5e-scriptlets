@@ -24,10 +24,10 @@ export async function unsetFlag(actorUuid, scope, key) {
   await actor.unsetFlag(scope, key);
 }
 
-export async function deleteItem(itemUuid) {
+export async function deleteItem(itemUuid, options) {
   const item = fromUuidSync(itemUuid);
   if (!item) return;
-  return item.delete();
+  return item.delete(options);
 }
 
 export async function updateItem(itemUuid, updates) {

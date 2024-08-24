@@ -22,6 +22,7 @@ export function setupAutoRollUnlinkedHP() {
 
   }
 
+  // For summoned tokens generate a fake formula so the hp can be rolled correctly.
   Hooks.on("dnd5e.preSummonToken", (item, profile, tokenData, options) => {
     if (tokenData?.actorUpdates?.["system.attributes.hp.max"]) {
       const hpBonus = tokenData?.actorUpdates?.["system.attributes.hp.max"] - tokenData.actor?.system.attributes.hp.value;
@@ -53,7 +54,7 @@ export function setupAutoRollUnlinkedHP() {
           whisper: [game.user.id],
         });
       });
-    } else ui.notifications.warn("Can not randomize hp. HP formula is not set.");
+    } else console.warn(`dnd5e-scriptles | Can not randomize hp for ${actor.name}. HP formula is not set.`);
     return;
   }
 
@@ -75,7 +76,7 @@ export function setupAutoRollUnlinkedHP() {
         content: `@UUID[${actor.uuid}]{${actor.name}}'s HP set to ${val}`,
         whisper: [game.user.id],
       });
-    } else ui.notifications.warn("Can not randomize hp. HP formula is not set.");
+    } else console.warn(`dnd5e-scriptles | Can not randomize hp for ${actor.name}. HP formula is not set.`);
     return;
   }
 }

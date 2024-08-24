@@ -7,7 +7,11 @@ export function setupAutoItemRecharge() {
     const wantedGM = game.users?.activeGM;
     if (game.user?.id !== wantedGM?.id || context.direction !== 1 || combat.combatant?.defeated) return;
 
-    const actor = combat.combatant.actor;
+    let actor = combat.combatant.actor;
+    if (rechargeSetting.endsWith("End")) {
+      const turn = (combat.turn + combat.turns.length - 1) % combat.turns.length;
+      actor = combat.turns[turn]?.actor;
+    }
     let target;
     for (const item of actor.items) {
       const recharge = item.system.recharge;
