@@ -62,7 +62,7 @@ export function setupAutoRollUnlinkedHP() {
     if (!hpProperties[systemString]) return undefined;
     if (formula) {
       const r = new Roll(formula.replace(" ", ""));
-      await r.roll();
+      await r.roll({allowInteractive: false});
       // Make sure hp is at least 1
       const val = Math.max(r.total, 1);
       const updates = {
