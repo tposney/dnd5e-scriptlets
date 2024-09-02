@@ -4,8 +4,7 @@ export function setupAutoItemRecharge() {
   Hooks.on("updateCombat", async function (combat, update, context, userId) {
     const rechargeSetting = game.settings.get("dnd5e-scriptlets", "autoItemRecharge");
     if ([undefined, false, "off"].includes(rechargeSetting)) return;
-    const wantedGM = game.users?.activeGM;
-    if (game.user?.id !== wantedGM?.id || context.direction !== 1 || combat.combatant?.defeated) return;
+    if (!game.users?.activeGM?.isSelf || context.direction !== 1 || combat.combatant?.defeated) return;
 
     let actor = combat.combatant.actor;
     if (rechargeSetting.endsWith("End")) {
@@ -39,8 +38,7 @@ export function setupAutoItemRecharge() {
   Hooks.on("createCombatant", async function (combatant, options, user) {
     const rechargeSetting = game.settings.get("dnd5e-scriptlets", "autoItemRecharge");
     if ([undefined, false, "off"].includes(rechargeSetting)) return;
-    const wantedGM = game.users?.activeGM;
-    if (game.user?.id !== wantedGM?.id || combatant?.defeated) return;
+    if (!game.users?.activeGM?.isSelf || combatant?.defeated) return;
     const actor = combatant.actor;
     if (!actor) return;
     for (const item of actor.items) {

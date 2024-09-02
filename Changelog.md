@@ -1,3 +1,7 @@
+### 0.40
+* Incorporate change for not prompting to manually roll hit points when auto rolling unlinked token hit points.
+* A few little clean-ups
+
 ### 0.39
 * When remove items from source is set, deleting a container will no longer spew items into the inventory of the actor doing the deletion.
 * Option to allow monster feature recharge to happen at the end of the monster's turn instead of the start of its next turn.

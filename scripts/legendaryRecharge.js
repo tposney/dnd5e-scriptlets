@@ -1,8 +1,7 @@
 export function setupLegendaryRecharge() {
 	Hooks.on("updateCombat", async function (combat, update, context, userId) {
 		if (!game.settings.get("dnd5e-scriptlets", "legendaryRecharge")) return;
-		const wantedGM = game.users?.find((u) => u.isGM && u.active);
-		if (game.user.id !== wantedGM?.id || context.direction !== 1 || combat.combatant?.defeated) return;
+		if (!game.users?.activeGM?.isSelf || context.direction !== 1 || combat.combatant?.defeated) return;
 
 		const actor = combat.combatant.actor;
 		if (actor?.type === "npc") {
@@ -19,8 +18,7 @@ export function setupLegendaryRecharge() {
   });
   Hooks.on("createCombatant", async function (combatant, options, user) {
 		if (!game.settings.get("dnd5e-scriptlets", "legendaryRecharge")) return;
-		const wantedGM = game.users?.find((u) => u.isGM && u.active);
-		if (game.user.id !== wantedGM?.id || combatant?.defeated) return;
+		if (!game.users?.activeGM?.isSelf || combatant?.defeated) return;
     const actor = combatant.actor;
     if (actor?.type === "npc") {
       const max = actor.system.resources.legact?.max;

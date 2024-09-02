@@ -36,7 +36,7 @@ async function _actorSheetOnDropItem(wrapped, event, data) {
       }
     }
     // fix for dnd not clearing container on item drop
-    if (!(this instanceof game.system.applications.item.ContainerSheet && item.systen.container))
+    if (!(this instanceof game.system.applications.item.ContainerSheet && item.system.container))
       resItem.update({ "system.container": null })
   }
 }

@@ -2,7 +2,7 @@ import { systemString } from "./module.js";
 export function setupAutoRollUnlinkedHP() {
   if (foundry.utils.isNewerVersion(game.version, "11.0")) {
     Hooks.on("createToken", (tokenDocument, options, userId) => {
-      if (game.user !== game.users.activeGM) return;
+      if (!game.users?.activeGM?.isSelf) return;
       if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return;
       const actor = tokenDocument.actor;
       if (!actor || tokenDocument.actorLink) return true;
