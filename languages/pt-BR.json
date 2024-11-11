@@ -18,7 +18,11 @@
     "off": "Desabilitar",
     "silent": "Recarregar sem mensagem no chat",
     "whisper": "Recarregar com mensagem no chat somente para MJ",
-    "chatter": "Recarregar com mensagem no chat"
+    "chatter": "Recarregar com mensagem no chat",
+    "silentEnd": "Recarregar sem mensagem no chat (fim do turno)",
+    "whisperEnd": "Recarregar com mensagem no chat somente para MJ (fim do turno)",
+    "chatterEnd": "Recarregar com mensagem no chat (fim do turno)"
+    
   },
   "dnd5e-scriptlets.LegendaryRecharge.Name": "Recarregar Ações Lendárias",
   "dnd5e-scriptlets.LegendaryRecharge.Hint": "Recarrega automaticamente as ações lendárias no início do turno.",
