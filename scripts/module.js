@@ -10,7 +10,7 @@ import { setupTokenResizer } from "./tokenResizer.js";
 import { setupCleanRolls, checkCleanRolls } from "./cleanRolls.js";
 import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
 import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
-import { restoreAmmoActor, restoreAmmoActors, setupAmmoRecovery } from "./ammoRecovery.js";
+import { setupAmmoRecovery } from "./ammoRecovery.js";
 import { setupSilentInitiative } from "./silentInitiative.js";
 import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
 import { setupSocket } from "./GMAction.js";
@@ -19,6 +19,7 @@ import { setupGriddedGridless } from "./griddedGridless.js";
 import { initActorDispositionColors } from "./ActorDispositionColors.js";
 import { setupContainerHelpers } from "./containerHelper.js";
 import { setupEnableTokenDynamicRing } from "./enableTokenDynamicRing.js";
+import { setupTemplatePreview } from "./templatePreview.js";
 
 export let systemString;
 export let systemConfig;
@@ -31,6 +32,7 @@ Hooks.once("init", async function () {
   foundry.utils.setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
   setupTokenResizer();
+  setupTemplatePreview();
   systemString = game.system.id;
   systemConfig = game.system.config;
   switch (systemString) {

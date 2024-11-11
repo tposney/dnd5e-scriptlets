@@ -252,6 +252,15 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
+
+  game.settings.register("dnd5e-scriptlets", "TemplatePreview", {
+    name: game.i18n.localize("dnd5e-scriptlets.TemplatePreview.Name"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    config: true,
+    requiresReload: true
+  });
 }
 
 const colorList = [
