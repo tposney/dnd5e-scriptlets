@@ -6,6 +6,8 @@ Discord <a href="https://discord.gg/Xd4NEvw5d7"><img src="https://img.shields.io
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/tposney)
 
+# DND5E Scriptlets is not currently compatible with dnd5e v4.x
+An update will come out.
 
 # DND5E Scriptlets
 This module provides a few QOL features for dnd5e that don't really fit anywhere else.
