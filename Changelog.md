@@ -1,3 +1,8 @@
+### 1.0.2
+* Recover legendary actions now correctly fires at the start of the round, rather than the start of the actor's turn.
+* Recover legendary actions will disable the dnd5e legendary action recovery when enabled.
+* Fix for attuned icon color when using default dnd5e sheet and dark mode
+
 ### 1.0.1
 * Fix for OperatorTerm deprecation warning in alternate advantage.
 * Switch to rollAttackV2 in ammo recovery to remove deprecation warning.

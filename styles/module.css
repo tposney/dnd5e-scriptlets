@@ -53,3 +53,7 @@
 .dialog-button.An.Absolute.Unit {
     margin: 5px;
 }
+
+.preparation-unprepared *:not(#context-menu):not(#context-menu *) .fa-sun {
+    color: #999;
+}
