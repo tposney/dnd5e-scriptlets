@@ -9,10 +9,8 @@ export function setupLegendaryRecharge() {
 		if (!game.users?.activeGM?.isSelf || context.direction !== 1 || combat.combatant?.defeated) return;
     if (combat.previous.round === combat.round) return;
     for (let combatant of combat.combatants) {
-      const uuid = `Scene.${combatant.sceneId}.Token.${combatant.tokenId}`;
-      //@ts-expect-error
-      const token = fromUuidSync(uuid);
-      const actor = token.actor;
+      const token = combatant.token; // may be null
+      const actor = combatant.actor;
       if (actor?.type === "npc") {
         const max = actor.system.resources.legact?.max;
         if (max > 0 && actor.system.resources.legact.value < max) {
