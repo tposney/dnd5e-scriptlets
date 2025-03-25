@@ -1,3 +1,6 @@
+### 1.1.3
+* Synchronise versions
+
 ### 1.0.2
 * Recover legendary actions now correctly fires at the start of the round, rather than the start of the actor's turn.
 * Recover legendary actions will disable the dnd5e legendary action recovery when enabled.
