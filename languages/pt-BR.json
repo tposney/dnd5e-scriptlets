@@ -25,7 +25,7 @@
     
   },
   "dnd5e-scriptlets.LegendaryRecharge.Name": "Recarregar Ações Lendárias",
-  "dnd5e-scriptlets.LegendaryRecharge.Hint": "Recarrega automaticamente as ações lendárias no início do turno.",
+  "dnd5e-scriptlets.LegendaryRecharge.Hint": "Recarrega automaticamente as ações lendárias no início da rodada.",
   "dnd5e-scriptlets.AutoRollUnlinkedHP.Name": "Rolar PV de PnJ",
   "dnd5e-scriptlets.AutoRollUnlinkedHP.Hint": "Rolar PV automaticamente de tokens não-linkados ao adicioná-lo à cena.",
   "dnd5e-scriptlets.TokenResizer.Name": "Redimensionar Token",
