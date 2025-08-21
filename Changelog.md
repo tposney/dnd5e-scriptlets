@@ -1,3 +1,29 @@
+### 13.0.1
+* Version of scriptlets for foundry v13 dnd5e 5.1
+* Removed auto recharge item uses - handled impeccably by dnd5e.
+* Removed legendary action recharge - handled impeccably by dnd5e.
+* Removed auto roll npc hp - handled impeccably by dnd5e.
+* Removed Gridded in Gridless - too tricky in v13.
+* Removed Token Ring features  - now handled by core (v13).
+* Removed Fix origins when creating actors/tokens - not required in current dnd5e.
+* Collapsible Inventory secions - not working.
+* Rarity colours works.
+* Fade unprepared works
+* Recover Ammunition works.
+* Token Resizer works.
+  - Core foundry now constrains some token size changes if the token would expand into another token.
+* Alternate advantage works.
+* Silent Initiative works
+* Actor Disposition Colors works.
+  - Note the interaction with forced token disposition in cores Prototype Token Overrides which disables changing the prototype tokens disposition.
+* Auto remove items form actors/compendiums works.
+* Template preview works.
+
+### 1.1.4
+* Fix for ammo recovery recovering magical ammo.
+* Added fraction of ammo to recover default 1/2
+* Removed auto roll hit points setting in favour of dnd5e built in setting for that.
+
 ### 1.1.3
 * Synchronise versions
 

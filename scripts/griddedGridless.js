@@ -1,6 +1,14 @@
 export function setupGriddedGridless() {
   const libWrapper = globalThis.libWrapper;
-  globalThis.libWrapper?.register("dnd5e-scriptlets", "canvas.grid.measureDistances", measureDistances, "MIXED");
+  // globalThis.libWrapper?.register("dnd5e-scriptlets", "canvas.grid.measureDistances", measureDistances, "MIXED");
+  globalThis.libWrapper?.register("dnd5e-scriptlets", "foundry.grid.GridlessGrid.prototype._measurePath", _measurePath, "MIXED");
+}
+
+function _measurePath(wrapped, waypoints, options, result) {
+  if (!options.gridSpaces || !game.settings.get("dnd5e-scriptlets", "griddedGridless"))
+    return wrapped(waypoints, options, result);
+  return foundry.grid.SquareGrid.prototype._measurePath.call(this, waypoints, options, result);
+
 }
 
 function measureDistances(wrapped, segments, options = {}) {

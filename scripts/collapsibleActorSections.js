@@ -1,6 +1,6 @@
 
 export function setupCollapsibleActorSections() {
-  Hooks.on("renderActorSheet", async (actorSheet, html) => {
+  Hooks.on("renderActorSheetV2", async (actorSheet, html) => {
     if (!game.settings.get("dnd5e-scriptlets", "ActorCollapsibleSection")) return;
   // Rather than checking it is a 5E actor sheet, we check it is a sheet with collapsible sections
   // This should work for sheets that are close to dnd5e
@@ -11,7 +11,7 @@ export function setupCollapsibleActorSections() {
     const sections = ['.tab.inventory', '.tab.features', '.tab.spellbook'];
 
     sections.forEach(section => {
-      const categories = html.find(`${section} .items-header`);
+      const categories = $(html).find(`${section} .items-header`);
       categories.each(async (index, categoryElement) => {
         const $categoryElement = $(categoryElement);
         const categoryName = $categoryElement.text().trim();

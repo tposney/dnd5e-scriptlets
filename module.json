@@ -6,9 +6,9 @@
   "library": "false",
   "socket": true,
   "compatibility": {
-    "minimum": "12",
-    "verified": "12",
-    "maximum": "12.999"
+    "minimum": "13",
+    "verified": "13.347",
+    "maximum": "13.999"
   },
   "authors": [
     {
@@ -23,8 +23,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "4.1",
-          "maximum": "4.9.99"
+          "minimum": "5.1",
+          "maximum": "5.9.99"
         }
       }
     ],

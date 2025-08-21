@@ -3,18 +3,18 @@ export function setupTokenResizer() {
   globalThis.dnd5eScriptlets.api.queryResizeTokens = queryResizeTokens;
   globalThis.dnd5eScriptlets.api.doResizeTokens = doResizeTokens;
 
-  Hooks.on("getSceneControlButtons", (controls) => {
-    if (!game.user.isGM || !game.settings.get("dnd5e-scriptlets", "tokenResizer")) return;
-    const token = controls.find((c) => c.name === "token");
-
-    if (token) {
-      let i = token.tools.length;
-      token.tools.splice(i, 0, {
+  Hooks.on("getSceneControlButtons", (buttons) => {
+    let tokenButtons = buttons["tokens"];
+    if (tokenButtons) {
+      tokenButtons.tools["tokenResizer"] = {
         name: "tokenResizer",
         title: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Name"),
         icon: "fas fa-expand-alt",
-        visible: true,
-        onClick: () => {
+        button: true,
+        toggle: false,
+        active: true,
+        visible: game.user.isGM,
+        onChange: async (event, active) => {
           if (game.canvas.tokens.controlled.length < 1) {
             const warningMessage = game.i18n.localize("dnd5e-scriptlets.NoTokenSelected");
             ui.notifications.warn(warningMessage);
@@ -22,8 +22,7 @@ export function setupTokenResizer() {
           }
           queryResizeTokens(game.canvas.tokens.controlled);
         },
-        button: true,
-      });
+      };
     }
   });
 }
@@ -43,7 +42,7 @@ let sizeData = {
   "huge": { label: "Huge", tokenSize: 3, minScale: 1 },
   //"huge-snake": {label: "Huge Snake", height: 3, width: 1, minScaleY: 3, dndSize: "huge"},
   "grg": { label: "Gargantuan", tokenSize: 4, minScale: 1 },
-  "unit": { label: "An Absolute Unit", tokenSize: 8, minScale: 1, dndSize: "grg" },
+  "unit": { label: "Absolute Unit", tokenSize: 8, minScale: 1, dndSize: "grg" },
 };
 
 /* Resize the passed tokens to the passed size, which must be a key in the sizeData
@@ -62,7 +61,7 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
     } else if (sizeEntry.scale) {
       update["texture"] = { scaleX: sizeEntry.scale, scaleY: sizeEntry.scale }
     }
-    await token.document.update(update);
+    await token.document.update(update), { method: "teleport" };
     await token.actor.update({ "system.traits.size": sizeEntry.dndSize ?? size })
   }
 }
@@ -73,15 +72,20 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
 */
 export async function queryResizeTokens(tokens, sizeDataToUse = globalThis.dnd5eScriptlets.api.tokenResizeData) {
   let size;
-  const buttonData = Object.keys(sizeData).reduce((buttons, key) => {
-    buttons[key] = {
+  const buttonData = Object.keys(sizeData).map((key) => {
+    return {
+      action: key,
       label: sizeDataToUse[key].label,
-      callback: () => { size = key }
-    };
-    return buttons;
-  }, {});
-  await Dialog.wait({
-    title: "Change Size?",
+      callback: () => { size = key },
+      disabled: false
+    }
+  });
+  await foundry.applications.api.DialogV2.wait({
+    window: {
+      title: "Change Size?",
+      width: "auto",
+      resizable: true,
+    },
     buttons: buttonData,
     rejectClose: false,
     close: () => { return null }

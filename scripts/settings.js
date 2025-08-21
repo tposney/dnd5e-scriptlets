@@ -31,6 +31,16 @@ export function registerSettings() {
     requiresReload: false
   });
 
+  game.settings.register("dnd5e-scriptlets", "ammoTrackerMultiplier", {
+    name: game.i18n.localize("dnd5e-scriptlets.AmmoTrackerMultiplier.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.AmmoTrackerMultiplier.Hint"),
+    scope: "world",
+    default: 0.5,
+    type: Number,
+    config: true,
+    requiresReload: false
+  });
+
   game.settings.register("dnd5e-scriptlets", "ammoRecoveryMessage", {
     name: game.i18n.localize("dnd5e-scriptlets.AmmoRecoveryMessage.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.AmmoRecoveryMessage.Hint"),
@@ -41,53 +51,17 @@ export function registerSettings() {
     requiresReload: false
   });
 
-  game.settings.register("dnd5e-scriptlets", "legendaryRecharge", {
-    name: game.i18n.localize("dnd5e-scriptlets.LegendaryRecharge.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.LegendaryRecharge.Hint"),
+  game.settings.register("dnd5e-scriptlets", "tokenResizer", {
+    name: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Hint"),
     scope: "world",
-    default: false,
     type: Boolean,
-    config: true,
-    requiresReload: false
-  });
-
-  game.settings.register("dnd5e-scriptlets", "autoItemRecharge", {
-    name: game.i18n.localize("dnd5e-scriptlets.AutoItemRecharge.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.AutoItemRecharge.Hint"),
-    scope: "world",
-    type: String,
-    choices: geti18nOptions("AutoItemRechargeOptions"),
     default: false,
     config: true,
     requiresReload: false
   });
 
-  game.settings.register("dnd5e-scriptlets", "autoRollUnlinkedHP", {
-    name: game.i18n.localize("dnd5e-scriptlets.AutoRollUnlinkedHP.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.AutoRollUnlinkedHP.Hint"),
-    scope: "world",
-    type: String,
-    default: "none",
-    choices: {
-      "none": "Do Not Roll",
-      "rollOnly": "Roll HP only",
-      "rollAndMessage": "Roll HP and send chat message"
-    },
-    config: true,
-    requiresReload: false
-  });
-
-    game.settings.register("dnd5e-scriptlets", "tokenResizer", {
-      name: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Name"),
-      hint: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Hint"),
-      scope: "world",
-      type: Boolean,
-      default: false,
-      config: true,
-      requiresReload: false
-    });
-
-    game.settings.register("dnd5e-scriptlets", "alternativeAdvantage", {
+  game.settings.register("dnd5e-scriptlets", "alternativeAdvantage", {
     name: game.i18n.localize("dnd5e-scriptlets.AlternativeAdvantage.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.AlternativeAdvantage.Hint"),
     scope: "world",
@@ -117,6 +91,7 @@ export function registerSettings() {
     requiresReload: false
   });
 
+  /*
   game.settings.register("dnd5e-scriptlets", "UpdateCreatedOrigins", {
     name: game.i18n.localize("dnd5e-scriptlets.UpdateCreatedOrigins.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.UpdateCreatedOrigins.Hint"),
@@ -126,16 +101,7 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
-
-  game.settings.register("dnd5e-scriptlets", "griddedGridless", {
-    name: game.i18n.localize("dnd5e-scriptlets.GriddedGridless.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.GriddedGridless.Hint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    config: true,
-    requiresReload: false
-  });
+  */
 
   game.settings.register("dnd5e-scriptlets", "ActorDispositionColors", {
     name: game.i18n.localize("dnd5e-scriptlets.ActorDispositionColors.Name"),
@@ -181,36 +147,6 @@ export function registerSettings() {
     requiresReload: false
   });
 
-  game.settings.register("dnd5e-scriptlets", "EnableTokenDynamicRing", {
-    name: game.i18n.localize("dnd5e-scriptlets.EnableTokenDynamicRing.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.EnableTokenDynamicRing.Hint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    config: true,
-    requiresReload: false
-  });
-
-
-  game.settings.register("dnd5e-scriptlets", "EnableTokenDynamicRingColour", {
-    name: game.i18n.localize("dnd5e-scriptlets.EnableTokenDynamicRingColour.Name"),
-    scope: "world",
-    type: String,
-    default: "None",
-    choices: colorList.reduce((acc, c) => { acc[c] = c; return acc }, { "None": "None", "Player Color": "Player Color" }),
-    config: true,
-    requiresReload: false
-  });
-
-  game.settings.register("dnd5e-scriptlets", "EnableTokenDynamicRingBackgroundColour", {
-    name: game.i18n.localize("dnd5e-scriptlets.EnableTokenDynamicRingBackgroundColour.Name"),
-    scope: "world",
-    type: String,
-    default: "None",
-    choices: colorList.reduce((acc, c) => { acc[c] = c; return acc }, { "None": "None" }),
-    config: true,
-    requiresReload: false
-  });
 
   game.settings.register("dnd5e-scriptlets", "TemplatePreview", {
     name: game.i18n.localize("dnd5e-scriptlets.TemplatePreview.Name"),
@@ -222,153 +158,3 @@ export function registerSettings() {
     requiresReload: true
   });
 }
-
-const colorList = [
-  `AliceBlue`,
-  `AntiqueWhite`,
-  `Aqua`,
-  `Aquamarine`,
-  `Azure`,
-  `Beige`,
-  `Bisque`,
-  `Black`,
-  `BlanchedAlmond`,
-  `Blue`,
-  `BlueViolet`,
-  `Brown`,
-  `BurlyWood`,
-  `CadetBlue`,
-  `Chartreuse`,
-  `Chocolate`,
-  `Coral`,
-  `CornflowerBlue`,
-  `Cornsilk`,
-  `Crimson`,
-  `Cyan`,
-  `DarkBlue`,
-  `DarkCyan`,
-  `DarkGoldenRod`,
-  `DarkGray`,
-  `DarkGrey`,
-  `DarkGreen`,
-  `DarkKhaki`,
-  `DarkMagenta`,
-  `DarkOliveGreen`,
-  `Darkorange`,
-  `DarkOrchid`,
-  `DarkRed`,
-  `DarkSalmon`,
-  `DarkSeaGreen`,
-  `DarkSlateBlue`,
-  `DarkSlateGray`,
-  `DarkSlateGrey`,
-  `DarkTurquoise`,
-  `DarkViolet`,
-  `DeepPink`,
-  `DeepSkyBlue`,
-  `DimGray`,
-  `DimGrey`,
-  `DodgerBlue`,
-  `FireBrick`,
-  `FloralWhite`,
-  `ForestGreen`,
-  `Fuchsia`,
-  `Gainsboro`,
-  `GhostWhite`,
-  `Gold`,
-  `GoldenRod`,
-  `Gray`,
-  `Grey`,
-  `Green`,
-  `GreenYellow`,
-  `HoneyDew`,
-  `HotPink`,
-  `IndianRed`,
-  `Indigo`,
-  `Ivory`,
-  `Khaki`,
-  `Lavender`,
-  `LavenderBlush`,
-  `LawnGreen`,
-  `LemonChiffon`,
-  `LightBlue`,
-  `LightCoral`,
-  `LightCyan`,
-  `LightGoldenRodYellow`,
-  `LightGray`,
-  `LightGrey`,
-  `LightGreen`,
-  `LightPink`,
-  `LightSalmon`,
-  `LightSeaGreen`,
-  `LightSkyBlue`,
-  `LightSlateGray`,
-  `LightSlateGrey`,
-  `LightSteelBlue`,
-  `LightYellow`,
-  `Lime`,
-  `LimeGreen`,
-  `Linen`,
-  `Magenta`,
-  `Maroon`,
-  `MediumAquaMarine`,
-  `MediumBlue`,
-  `MediumOrchid`,
-  `MediumPurple`,
-  `MediumSeaGreen`,
-  `MediumSlateBlue`,
-  `MediumSpringGreen`,
-  `MediumTurquoise`,
-  `MediumVioletRed`,
-  `MidnightBlue`,
-  `MintCream`,
-  `MistyRose`,
-  `Moccasin`,
-  `NavajoWhite`,
-  `Navy`,
-  `OldLace`,
-  `Olive`,
-  `OliveDrab`,
-  `Orange`,
-  `OrangeRed`,
-  `Orchid`,
-  `PaleGoldenRod`,
-  `PaleGreen`,
-  `PaleTurquoise`,
-  `PaleVioletRed`,
-  `PapayaWhip`,
-  `PeachPuff`,
-  `Peru`,
-  `Pink`,
-  `Plum`,
-  `PowderBlue`,
-  `Purple`,
-  `Red`,
-  `RosyBrown`,
-  `RoyalBlue`,
-  `SaddleBrown`,
-  `Salmon`,
-  `SandyBrown`,
-  `SeaGreen`,
-  `SeaShell`,
-  `Sienna`,
-  `Silver`,
-  `SkyBlue`,
-  `SlateBlue`,
-  `SlateGray`,
-  `SlateGrey`,
-  `Snow`,
-  `SpringGreen`,
-  `SteelBlue`,
-  `Tan`,
-  `Teal`,
-  `Thistle`,
-  `Tomato`,
-  `Turquoise`,
-  `Violet`,
-  `Wheat`,
-  `White`,
-  `WhiteSmoke`,
-  `Yellow`,
-  `YellowGreen`,
-];  

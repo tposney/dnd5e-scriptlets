@@ -1,13 +1,39 @@
 import { systemString } from "./module.js";
 export function setupAutoRollUnlinkedHP() {
-  Hooks.on("createToken", (tokenDocument, options, userId) => {
-    if (!game.users?.activeGM?.isSelf) return;
-    if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return;
-    const actor = tokenDocument.actor;
-    if (!actor || tokenDocument.actorLink) return;
+  if (foundry.utils.isNewerVersion("4.3.6", game.system.version)) return;
+  Hooks.on('preCreateToken', (tDoc, data, options, userId) => {
+    if (game.settings.get("dnd5e-scriptlets", "autoRollUnlinkedHP") === "none") return true;
+    const actor = game.actors.get(data.actorId);
+    if (!game.users?.activeGM?.isSelf || !actor || data.actorLink) return;
+    const hpFormula = foundry.utils.getProperty(actor, 'system.attributes.hp.formula');
     const hpRoll = {};
-    _rollHPV12(actor);
+    if (hpFormula) {
+      const rolled = rollDiceFormula(hpFormula);
+      foundry.utils.setProperty(hpRoll, "delta.system.attributes.hp.value", rolled);
+      foundry.utils.setProperty(hpRoll, "delta.system.attributes.hp.max", rolled);
+      tDoc.updateSource(hpRoll);
+    };
+    ChatMessage.create({
+      content: `@UUID[${actor.uuid}]{${actor.name}}'s HP set to ${val}`,
+      whisper: [game.user.id],
+    });
+    return true;
   });
+}
+
+function rollDiceFormula(formula) {
+  const diceRegex = /(\d*)d(\d+)/gi;
+  const replaced = formula.replace(diceRegex, (_, count, sides) => {
+    const numDice = parseInt(count) || 1;
+    const dieSides = parseInt(sides);
+    let total = 0;
+    for (let i = 0; i < numDice; i++) {
+      total += Math.floor(Math.random() * dieSides) + 1;
+    }
+    return total;
+  });
+
+  return Math.max(Roll.safeEval(replaced), 1);
 }
 
 // For summoned tokens generate a fake formula so the hp can be rolled correctly.

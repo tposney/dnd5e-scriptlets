@@ -35,15 +35,16 @@ export function restoreAmmoActor(actor) {
   if (!storedQuantities) return;
   const updates = [];
   const messages = [];
+  const ammoTrackerMultiplier = game.settings.get("dnd5e-scriptlets", "ammoTrackerMultiplier") ?? 0.5;
   for (let itemId of Object.keys(storedQuantities)) {
     const item = actor.items.get(itemId);
     if (!item) continue;
-    if (item.system.properties?.mgc) { // House rule magic ammo is not recoverable
+    if (item.system.properties?.has("mgc")) { // House rule magic ammo is not recoverable
       messages.push(`Consumed ${storedQuantities[itemId]} ${item.name} (magic)`);
     } else {
-      const newQuantity = item.system.quantity + Math.floor(storedQuantities[itemId] / 2);
+      const newQuantity = item.system.quantity + Math.floor(storedQuantities[itemId] * ammoTrackerMultiplier);
       updates.push({ _id: itemId, "system.quantity": newQuantity });
-      messages.push(`Recovered ${Math.floor(storedQuantities[itemId] / 2)} ${item.name}`);
+      messages.push(`Recovered ${Math.floor(storedQuantities[itemId] * ammoTrackerMultiplier)} ${item.name}`);
     }
   }
   socketlibSocket.executeAsGM("unsetFlag", actor.uuid, "dnd5e-scriptlets", "ammoQuantities")

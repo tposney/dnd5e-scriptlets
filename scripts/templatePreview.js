@@ -1,22 +1,20 @@
 export function setupTemplatePreview() {
-  Hooks.on("getSceneControlButtons", (controls) => {
-    if (!game.user.isGM || !game.settings.get("dnd5e-scriptlets", "TemplatePreview")) return;
-    const token = controls.find((c) => c.name === "measure");
 
-    if (token) {
-      let i = token.tools.length;
-      token.tools.splice(i, 0, {
-        name: "templatePreview",
-        title: game.i18n.localize("dnd5e-scriptlets.TemplatePreview.Name"),
-        icon: "fas fa-bullseye",
-        visible: true,
-        onClick: () => {
-          showTemplateDialog();
-        },
+  Hooks.on("getSceneControlButtons",  (buttons) => {
+		let tokenButtons = buttons["templates"];
+		if (tokenButtons) {
+			tokenButtons.tools["templatePreview"] = {
+				name: "templatePreview",
+				title: game.i18n.localize("dnd5e-scriptlets.TemplatePreview.Name"),
+				icon: "fas fa-bullseye",
         button: true,
-      });
+				toggle: false,
+				active: true,
+				visible: game.user.isGM,
+				onChange: showTemplateDialog
+			};
     }
-  });
+	});
 }
 
 async function showTemplateDialog() {
