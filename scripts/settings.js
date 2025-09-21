@@ -71,6 +71,7 @@ export function registerSettings() {
     requiresReload: false
   });
 
+  /*
   game.settings.register("dnd5e-scriptlets", "ActorCollapsibleSection", {
     name: game.i18n.localize("dnd5e-scriptlets.ActorCollapsibleSection.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.ActorCollapsibleSection.Hint"),
@@ -80,7 +81,7 @@ export function registerSettings() {
     config: true,
     requiresReload: false
   });
-
+*/
   game.settings.register("dnd5e-scriptlets", "SilentInitiative", {
     name: game.i18n.localize("dnd5e-scriptlets.SilentInitiative.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.SilentInitiative.Hint"),
@@ -147,14 +148,14 @@ export function registerSettings() {
     requiresReload: false
   });
 
-
-  game.settings.register("dnd5e-scriptlets", "TemplatePreview", {
-    name: game.i18n.localize("dnd5e-scriptlets.TemplatePreview.Name"),
-    name: game.i18n.localize("dnd5e-scriptlets.TemplatePreview.Hint"),
+  game.settings.register("dnd5e-scriptlets", "chatLogPruning", {
+    name: game.i18n.localize("dnd5e-scriptlets.ChatLogPruning.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.ChatLogPruning.Hint"),
     scope: "world",
     type: Boolean,
     default: false,
     config: true,
     requiresReload: true
-  });
+  }
+  )
 }

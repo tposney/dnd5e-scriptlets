@@ -62,6 +62,6 @@
   "dnd5e-scriptlets.EnableTokenDynamicRing.Hint": "When a token is placed on the canvas set the token dynamic ring enabled",
   "dnd5e-scriptlets.EnableTokenDynamicRingColour.Name": "Token Dynamic Ring Colour",
   "dnd5e-scriptlets.EnableTokenDynamicRingBackgroundColour.Name": "Token Dynamic Ring Background Colour",
-  "dnd5e-scriptlets.TemplatePreview.Name": "Allow previewing of templates",
-  "dnd5e-scriptlets.TemplatePreview.Hint": "Add an option to template controls (left sidebar - bullseye) to allow previewing a particular template"
+  "dnd5e-scriptlets.ChatLogPruning.Name": "Chat Log Pruning",
+  "dnd5e-scriptlets.ChatLogPruning.Hint": "Keep the in memory chat log to a maximum number of messages. May improve performance"
 }

@@ -10,7 +10,7 @@ import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
 import { setupSocket } from "./GMAction.js";
 import { initActorDispositionColors } from "./ActorDispositionColors.js";
 import { setupContainerHelpers } from "./containerHelper.js";
-import { setupTemplatePreview } from "./templatePreview.js";
+import { ChatLogPruning } from "./ChatLogPruning.js";
 
 export let systemString;
 export let systemConfig;
@@ -23,7 +23,6 @@ Hooks.once("init", async function () {
   foundry.utils.setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
   setupTokenResizer();
-  setupTemplatePreview();
   systemString = game.system.id;
   systemConfig = game.system.config;
   switch (systemString) {
@@ -38,6 +37,8 @@ Hooks.once("init", async function () {
       break;
   }
   initActorDispositionColors();
+  if (!game.modules.get("midi-qol")?.active && game.settings.get("dnd5e-scriptlets", "chatLogPruning"))
+    CONFIG.ui.chat = ChatLogPruning;
 });
 
 

@@ -1,3 +1,8 @@
+### 13.0.2
+* Allow chat log pruning for worlds not using midi-qol, Can help with performance degrading over time as more chat messages are added (especially damage rolls).
+  - This is a copy of the midi chat log pruning so if you are using midi-qol this will have no effect.
+* Fixed an error thrown on load with an unknown setting.
+
 ### 13.0.1
 * Version of scriptlets for foundry v13 dnd5e 5.1
 * Removed auto recharge item uses - handled impeccably by dnd5e.
@@ -6,7 +11,7 @@
 * Removed Gridded in Gridless - too tricky in v13.
 * Removed Token Ring features  - now handled by core (v13).
 * Removed Fix origins when creating actors/tokens - not required in current dnd5e.
-* Collapsible Inventory secions - not working.
+* Collapsible Inventory sections - not working.
 * Rarity colours works.
 * Fade unprepared works
 * Recover Ammunition works.
@@ -17,7 +22,7 @@
 * Actor Disposition Colors works.
   - Note the interaction with forced token disposition in cores Prototype Token Overrides which disables changing the prototype tokens disposition.
 * Auto remove items form actors/compendiums works.
-* Template preview works.
+* Template preview removed - please use Gambit's Template Previewer instead.
 
 ### 1.1.4
 * Fix for ammo recovery recovering magical ammo.
