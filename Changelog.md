@@ -1,3 +1,6 @@
+### 13.0.3
+* Fix for chat log not scrolling backwards correctly.
+
 ### 13.0.2
 * Allow chat log pruning for worlds not using midi-qol, Can help with performance degrading over time as more chat messages are added (especially damage rolls).
   - This is a copy of the midi chat log pruning so if you are using midi-qol this will have no effect.
