@@ -15,7 +15,7 @@ export function setupUpdateCreatedOrigins() {
 
 function createItemHook(...args) {
   let [item, options, userId] = args;
-  if (!game.settings.get("dnd5e-scriptlets", "UpdateCreatedOrigins")) return;
+  // if (!game.settings.get("dnd5e-scriptlets", "UpdateCreatedOrigins")) return; // this setting doesn't exist anymore
   if (game.user?.id !== userId) return;
   if (item.parent) return;
   let effectsChanged = false;
