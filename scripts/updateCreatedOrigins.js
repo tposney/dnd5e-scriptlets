@@ -15,13 +15,13 @@ export function setupUpdateCreatedOrigins() {
 
 function createItemHook(...args) {
   let [item, options, userId] = args;
-  if (!game.settings.get("dnd5e-scriptlets", "UpdateCreatedOrigins")) return;
+  // if (!game.settings.get("dnd5e-scriptlets", "UpdateCreatedOrigins")) return; // this setting doesn't exist anymore
   if (game.user?.id !== userId) return;
   if (item.parent) return;
   let effectsChanged = false;
   const newEffects = [];
   for (let effect of item.effects) {
-    if (effect.transfer && effect.orign !== item.uuid) {
+    if (effect.transfer && effect.origin !== item.uuid) {
       effectsChanged = true;
       console.log(`dnd5e-scriptlets | Setting ${item.name} effect ${effect.name} origin ${effect.origin} -> ${item.uuid}`)
       effect.origin = item.uuid;
