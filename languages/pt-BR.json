@@ -39,6 +39,8 @@
   "dnd5e-scriptlets.ActorCollapsibleSection.Name": "Seções de Inventário Recolhíveis",
   "dnd5e-scriptlets.ActorCollapsibleSection.Hint": "Se habilitado, permite clicar no nome da seção de inventário para recolher toda a seção.",
   "dnd5e-scriptlets.AmmoTracker.Name": "Recuperar Munição Usada",
+  "dnd5e-scriptlets.AmmoTrackerMultiplier.Name": "Fração de Recuperação",
+  "dnd5e-scriptlets.AmmoTrackerMultiplier.Hint": "Fração de munição usada a ser recuperada.",
   "dnd5e-scriptlets.AmmoTracker.Hint": "No final do combate, metade das munições não-mágicas são recuperadas para cada ator.",
   "dnd5e-scriptlets.AmmoRecoveryMessage.Name": "Exibir Recuperação de Munição",
   "dnd5e-scriptlets.AmmoRecoveryMessage.Hint": "Exibe uma mensagem com a quantidade de munições recuperadas no final do combate.",
@@ -60,6 +62,6 @@
   "dnd5e-scriptlets.EnableTokenDynamicRing.Hint": "Quando um token é colocado na cena, habilita a configuração do anel dinâmico de token.",
   "dnd5e-scriptlets.EnableTokenDynamicRingColour.Name": "Cor do Anel Dinâmico de Token",
   "dnd5e-scriptlets.EnableTokenDynamicRingBackgroundColour.Name": "Cor de Fundo do Anel Dinâmico de Token",
-  "dnd5e-scriptlets.TemplatePreview.Name": "Permitir Visualização de Modelos",
-  "dnd5e-scriptlets.TemplatePreview.Hint": "Adiciona uma opção aos controles de modelo (barra lateral esquerda - alvo) para permitir a visualização de um modelo específico."
+  "dnd5e-scriptlets.ChatLogPruning.Name": "Remoção do Registro de Chat",
+  "dnd5e-scriptlets.ChatLogPruning.Hint": "Mantenha o registro de chat na memória com um número máximo de mensagens. Pode melhorar o desempenho."
 }
