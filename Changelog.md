@@ -1,3 +1,6 @@
+### 13.0.4
+* Don't display token resizer button if not enabled.
+
 ### 13.0.3
 * Fix for chat log not scrolling backwards correctly.
 

@@ -1,6 +1,4 @@
 import { socketlibSocket } from "./GMAction.js";
-import { libWrapper } from "./module.js";
-
 
 export function setupContainerHelpers() {
   Hooks.on("dnd5e.dropItemSheetData", processSheetDropData);

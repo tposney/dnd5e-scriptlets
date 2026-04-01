@@ -3,44 +3,23 @@ import { setupLukasItemRarityColors } from "./item-rarity-colors.js";
 import { setupLukasFadeUnprepared } from "./fade-unprepared.js";
 import { setupTokenResizer } from "./tokenResizer.js";
 import { setupAlternativeAdvantage } from "./alternativeAdvantage.js";
-import { setupCollapsibleActorSections } from "./collapsibleActorSections.js";
 import { setupAmmoRecovery } from "./ammoRecovery.js";
 import { setupSilentInitiative } from "./silentInitiative.js";
-import { setupUpdateCreatedOrigins } from "./updateCreatedOrigins.js";
+import { setupLegendaryRecharge } from "./legendaryRecharge.js";
 import { setupSocket } from "./GMAction.js";
 import { initActorDispositionColors } from "./ActorDispositionColors.js";
 import { setupContainerHelpers } from "./containerHelper.js";
-import { ChatLogPruning } from "./ChatLogPruning.js";
 
 export let systemString;
-export let systemConfig;
-export let localizeHeader;
-export let libWrapper;
 
 Hooks.once("init", async function () {
-  libWrapper = globalThis.libWrapper;
   console.log("dnd5e-scriptlets | doing init setup");
   foundry.utils.setProperty(globalThis, "dnd5eScriptlets.api", {});
   registerSettings();
   setupTokenResizer();
   systemString = game.system.id;
-  systemConfig = game.system.config;
-  switch (systemString) {
-    case "dnd5e":
-      localizeHeader = "DND5E";
-      break;
-    case "sw5e":
-      localizeHeader = "SW5E";
-      break;
-    case "dcc":
-      localizeHeader = "DCC";
-      break;
-  }
   initActorDispositionColors();
-  if (!game.modules.get("midi-qol")?.active && game.settings.get("dnd5e-scriptlets", "chatLogPruning"))
-    CONFIG.ui.chat = ChatLogPruning;
 });
-
 
 Hooks.once("setup", () => {
   registerSettings();
@@ -53,21 +32,12 @@ Hooks.once("ready", async function () {
   setupLukasItemRarityColors();
   setupLukasFadeUnprepared();
   setupAlternativeAdvantage();
-  setupCollapsibleActorSections();
   setupAmmoRecovery();
   setupSilentInitiative();
-  // setupUpdateCreatedOrigins();
+  setupLegendaryRecharge();
   setupContainerHelpers();
   const module = game.modules.get("dnd5e-scriptlets");
   if (module) {
     module.api = globalThis.dnd5eScriptlets.api;
   }
 });
-
-export function geti18nOptions(key) {
-  const translations = game.i18n.translations["dnd5e-scriptlets"] ?? {};
-  const fallback = game.i18n._fallback["dnd5e-scriptlets"] ?? {};
-  //@ts-ignore _fallback not accessible
-  let translation = translations[key] ?? fallback[key] ?? {};
-  return translation;
-}

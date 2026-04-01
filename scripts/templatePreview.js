@@ -17,31 +17,42 @@ export function setupTemplatePreview() {
 	});
 }
 
+const templateTypes = ["cone", "cube", "cylinder", "line", "radius", "sphere", "square", "wall"];
+
+function getTemplateItems(actor) {
+  const items = [];
+  for (const item of actor.items) {
+    // Check activity-level targeting (dnd5e 5.3+)
+    const activities = item.system.activities;
+    if (activities) {
+      for (const activity of activities) {
+        const tmpl = activity.target?.template;
+        if (tmpl?.type && templateTypes.includes(tmpl.type) && tmpl.size) {
+          items.push({ item, name: item.name, type: tmpl.type, size: Number(tmpl.size) });
+          break; // one entry per item
+        }
+      }
+      continue;
+    }
+    // Fallback: legacy item-level targeting
+    const targetType = item.system.target?.type;
+    const targetValue = item.system.target?.value;
+    if (targetValue && templateTypes.includes(targetType)) {
+      if (item.type === "spell" && item.system.level > 0 && item.system.preparation?.mode === "prepared" && !item.system.preparation.prepared) continue;
+      items.push({ item, name: item.name, type: targetType, size: Number(targetValue) });
+    }
+  }
+  return items.sort((a, b) => a.name.localeCompare(b.name));
+}
+
 async function showTemplateDialog() {
   let pickedToken;
   (_token && _token.actor?.ownership[game.user.id]) ? pickedToken = _token : pickedToken = canvas.tokens.placeables.find(token => token.actor?.hasPlayerOwner && token.actor?.ownership[game.user.id] > 0);
   if (!pickedToken) return;
-  const items = pickedToken.actor.items.filter(i => {
-    const targetType = i.system.target?.type;
-    const targetValue = i.system.target?.value;
+  const items = getTemplateItems(pickedToken.actor);
 
-    // Exclude non-template type items
-    if (!targetValue || !["cone", "cube", "cylinder", "line", "radius", "sphere", "square", "wall"].includes(targetType)) {
-      return false;
-    }
-
-    // Only include prepared spells
-    if (i.type === "spell" && (i.system.level > 0 && i.system.preparation?.mode === "prepared" && !i.system.preparation.prepared)) {
-      return false;
-    }
-
-    return true;
-  }).sort((a, b) => a.name.localeCompare(b.name));
-
-  const itemOptions = items.map(item => {
-    const targetType = item.system.target.type;
-    const targetSize = item.system.target.value;
-    return `<option value="${item.id}" data-type="${targetType}" data-size="${targetSize}">${item.name} (${targetSize} ft ${targetType})</option>`;
+  const itemOptions = items.map(entry => {
+    return `<option value="${entry.item.id}" data-type="${entry.type}" data-size="${entry.size}">${entry.name} (${entry.size} ft ${entry.type})</option>`;
   }).join("");
 
   let previewInProgress = false;
@@ -99,14 +110,12 @@ async function showTemplateDialog() {
       html.find('#item-select').change(function () {
         if (previewInProgress) return;
 
-        const selectedItem = items.find(item => item.id === this.value);
-        if (selectedItem) {
-          const targetSize = selectedItem.system.target.value;
-          const targetType = selectedItem.system.target.type;
-          html.find('#template-size').val(targetSize).trigger("input");
-          html.find('#template-size-display').val(targetSize);
+        const selectedEntry = items.find(entry => entry.item.id === this.value);
+        if (selectedEntry) {
+          html.find('#template-size').val(selectedEntry.size).trigger("input");
+          html.find('#template-size-display').val(selectedEntry.size);
 
-          switch (targetType) {
+          switch (selectedEntry.type) {
             case "sphere":
             case "radius":
             case "cylinder":

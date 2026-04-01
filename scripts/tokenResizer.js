@@ -4,25 +4,27 @@ export function setupTokenResizer() {
   globalThis.dnd5eScriptlets.api.doResizeTokens = doResizeTokens;
 
   Hooks.on("getSceneControlButtons", (buttons) => {
-    let tokenButtons = buttons["tokens"];
-    if (tokenButtons) {
-      tokenButtons.tools["tokenResizer"] = {
-        name: "tokenResizer",
-        title: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Name"),
-        icon: "fas fa-expand-alt",
-        button: true,
-        toggle: false,
-        active: true,
-        visible: game.user.isGM,
-        onChange: async (event, active) => {
-          if (game.canvas.tokens.controlled.length < 1) {
-            const warningMessage = game.i18n.localize("dnd5e-scriptlets.NoTokenSelected");
-            ui.notifications.warn(warningMessage);
-            return;
-          }
-          queryResizeTokens(game.canvas.tokens.controlled);
-        },
-      };
+    if (game.settings.get("dnd5e-scriptlets", "tokenResizer")) {
+      let tokenButtons = buttons["tokens"];
+      if (tokenButtons) {
+        tokenButtons.tools["tokenResizer"] = {
+          name: "tokenResizer",
+          title: game.i18n.localize("dnd5e-scriptlets.TokenResizer.Name"),
+          icon: "fas fa-expand-alt",
+          button: true,
+          toggle: false,
+          active: true,
+          visible: game.user.isGM,
+          onChange: async (event, active) => {
+            if (game.canvas.tokens.controlled.length < 1) {
+              const warningMessage = game.i18n.localize("dnd5e-scriptlets.NoTokenSelected");
+              ui.notifications.warn(warningMessage);
+              return;
+            }
+            queryResizeTokens(game.canvas.tokens.controlled);
+          },
+        };
+      }
     }
   });
 }

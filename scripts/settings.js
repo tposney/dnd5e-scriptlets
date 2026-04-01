@@ -1,5 +1,3 @@
-import { geti18nOptions } from "./module.js";
-
 export function registerSettings() {
   game.settings.register("dnd5e-scriptlets", "lukasItemRarityColors", {
     name: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Name"),
@@ -71,17 +69,6 @@ export function registerSettings() {
     requiresReload: false
   });
 
-  /*
-  game.settings.register("dnd5e-scriptlets", "ActorCollapsibleSection", {
-    name: game.i18n.localize("dnd5e-scriptlets.ActorCollapsibleSection.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.ActorCollapsibleSection.Hint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    config: true,
-    requiresReload: false
-  });
-*/
   game.settings.register("dnd5e-scriptlets", "SilentInitiative", {
     name: game.i18n.localize("dnd5e-scriptlets.SilentInitiative.Name"),
     hint: game.i18n.localize("dnd5e-scriptlets.SilentInitiative.Hint"),
@@ -92,17 +79,15 @@ export function registerSettings() {
     requiresReload: false
   });
 
-  /*
-  game.settings.register("dnd5e-scriptlets", "UpdateCreatedOrigins", {
-    name: game.i18n.localize("dnd5e-scriptlets.UpdateCreatedOrigins.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.UpdateCreatedOrigins.Hint"),
+  game.settings.register("dnd5e-scriptlets", "legendaryRecharge", {
+    name: game.i18n.localize("dnd5e-scriptlets.LegendaryRecharge.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.LegendaryRecharge.Hint"),
     scope: "world",
     type: Boolean,
     default: false,
     config: true,
     requiresReload: false
   });
-  */
 
   game.settings.register("dnd5e-scriptlets", "ActorDispositionColors", {
     name: game.i18n.localize("dnd5e-scriptlets.ActorDispositionColors.Name"),
@@ -148,14 +133,4 @@ export function registerSettings() {
     requiresReload: false
   });
 
-  game.settings.register("dnd5e-scriptlets", "chatLogPruning", {
-    name: game.i18n.localize("dnd5e-scriptlets.ChatLogPruning.Name"),
-    hint: game.i18n.localize("dnd5e-scriptlets.ChatLogPruning.Hint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    config: true,
-    requiresReload: true
-  }
-  )
 }

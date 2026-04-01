@@ -57,3 +57,17 @@
 .preparation-unprepared *:not(#context-menu):not(#context-menu *) .fa-sun {
     color: #999;
 }
+
+.disposition-dot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  min-height: 6px;
+  max-width: 6px;
+  max-height: 6px;
+  border-radius: 50%;
+  margin-right: 3px;
+  margin-left: 3px;
+  flex: 0 0 auto;
+  align-self: center;
+}
