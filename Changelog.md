@@ -1,4 +1,4 @@
-### 13.0.6 (unreleased)
+### 13.0.6
 * Foundry v14 support (verified 14.368); one release covers v13 and v14.
 * Alternate advantage replaces the second d20 on dnd5e 5.x, which marks advantage with adv/dis instead of kh/kl; previously the bonus was added on top of rolling two dice.
 
