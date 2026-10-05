@@ -1,3 +1,7 @@
+### 13.0.6 (unreleased)
+* Foundry v14 support (verified 14.368); one release covers v13 and v14.
+* Alternate advantage replaces the second d20 on dnd5e 5.x, which marks advantage with adv/dis instead of kh/kl; previously the bonus was added on top of rolling two dice.
+
 ### 13.0.5
 * Recharge legendary actions restored: resets them at the start of each round and when an NPC joins combat. Updated for dnd5e 5.x, where the reset had no effect.
 * Token resizer no longer animates the resize.

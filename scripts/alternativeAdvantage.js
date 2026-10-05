@@ -25,7 +25,7 @@ function configureAdvantage(wrapped) {
   if (!advantageQuantum || advantageQuantum.trim().length === 0) return;
   const d20 = this.terms[0];
   if (this.hasAdvantage) {
-    d20.modifiers = d20.modifiers?.filter(s => s !== "kh");
+    d20.modifiers = d20.modifiers?.filter(s => s !== "kh" && !/^adv\d*$/i.test(s));
     d20.number = 1;
     if (!d20.options.hasAdvantage) {
       this.terms.push(new foundry.dice.terms.OperatorTerm({ operator: "+", options: { isAdvantageTerm: true } }));
@@ -37,7 +37,7 @@ function configureAdvantage(wrapped) {
   } else this.terms = this.terms.filter(t => !t.options.isAdvantageTerm);
 
   if (this.hasDisadvantage) {
-    d20.modifiers = d20.modifiers?.filter(s => s !== "kl");
+    d20.modifiers = d20.modifiers?.filter(s => s !== "kl" && !/^dis\d*$/i.test(s));
     d20.number = 1;
     if (!d20.options.hasDisadvantage) {
       this.terms.push(new foundry.dice.terms.OperatorTerm({ operator: "-", options: { isDisadvantageTerm: true } }));
