@@ -1,3 +1,12 @@
+### 13.0.5
+* Recharge legendary actions restored: resets them at the start of each round and when an NPC joins combat. Updated for dnd5e 5.x, where the reset had no effect.
+* Token resizer no longer animates the resize.
+* Actor disposition colours: correct colours for values with leading zeros; dot styled from the module stylesheet.
+* Removed leftover code for features dropped in 13.0.1.
+* Italian and Brazilian Portuguese translation updates.
+* Verified with Foundry 13.351.
+* Manifest URL now tracks the v13 branch (release/module.json), so a v14 release will not be offered to v13 installs.
+
 ### 13.0.4
 * Don't display token resizer button if not enabled.
 

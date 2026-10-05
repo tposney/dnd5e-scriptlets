@@ -63,7 +63,7 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
     } else if (sizeEntry.scale) {
       update["texture"] = { scaleX: sizeEntry.scale, scaleY: sizeEntry.scale }
     }
-    await token.document.update(update), { method: "teleport" };
+    await token.document.update(update, { movement: { [token.id]: { waypoints: [{ width: update.width, height: update.height, action: "displace" }] } } });
     await token.actor.update({ "system.traits.size": sizeEntry.dndSize ?? size })
   }
 }

@@ -37,11 +37,13 @@ env:
   # The URL used for the module's "Project URL" link on FoundryVTT's website.
   project_url: "https://github.com/${{github.repository}}"
 
-  # A URL that will always point to the latest manifest.
-  # FoundryVTT uses this URL to check whether the current module version that
-  # is installed is the latest version. This URL should NOT change,
-  # otherwise FoundryVTT won't be able to perform this check.
-  latest_manifest_url: "https://github.com/${{github.repository}}/releases/latest/download/module.json"
+  # Branch this release line tracks. Each branch's copy of this workflow sets its own.
+  release_branch: "v13"
+
+  # A URL that always holds the latest manifest for this release line: the release step
+  # commits the filled-in module.json to release/module.json on release_branch, so a
+  # release from another branch (e.g. v14) never reaches these installs.
+  latest_manifest_url: "https://raw.githubusercontent.com/${{github.repository}}/v13/release/module.json"
 
   # The URL to the module archive associated with the module release being
   # processed by this workflow.
@@ -142,3 +144,20 @@ jobs:
           artifacts: './module.json, ./module.zip'
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
+
+
+      # Publish the filled-in manifest to release/module.json on the release branch, the
+      # URL installed copies check for updates. Prereleases are not offered as updates.
+      - name: Publish Manifest To Release Branch
+        if: ${{ !github.event.release.prerelease }}
+        run: |
+          cp module.json "$RUNNER_TEMP/module.json"
+          git fetch --depth=1 origin "${{ env.release_branch }}"
+          git checkout -f -B "${{ env.release_branch }}" FETCH_HEAD
+          mkdir -p release
+          cp "$RUNNER_TEMP/module.json" release/module.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add release/module.json
+          git commit -m "Release manifest ${{ github.event.release.tag_name }}" || echo "Manifest unchanged"
+          git push origin "HEAD:${{ env.release_branch }}"

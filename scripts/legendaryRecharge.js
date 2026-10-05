@@ -1,7 +1,7 @@
 export function setupLegendaryRecharge() {
   Hooks.on("dnd5e.combatRecovery", (actor, periods, results) => {
     if (!game.settings.get("dnd5e-scriptlets", "legendaryRecharge")) return;
-    if (results.actor["system.resources.legact.value"]) delete results.actor["system.resources.legact.value"];
+    if ("system.resources.legact.spent" in results.actor) delete results.actor["system.resources.legact.spent"];
     return true;
   });
 	Hooks.on("updateCombat", async function (combat, update, context, userId) {
@@ -19,7 +19,7 @@ export function setupLegendaryRecharge() {
             speaker: ChatMessage.getSpeaker({ actor: actor, token: token }),
             whisper: game.users.filter(u => actor.testUserPermission(u, "OWNER"))
           });
-          await actor.update({ "system.resources.legact.value": max });
+          await actor.update({ "system.resources.legact.spent": 0 });
         }
       }
     }
@@ -37,7 +37,7 @@ export function setupLegendaryRecharge() {
           speaker: ChatMessage.getSpeaker({ actor: actor, token: actor.token }),
 					whisper: [game.user.id],
 				});
-				await actor.update({ "system.resources.legact.value": max });
+				await actor.update({ "system.resources.legact.spent": 0 });
       }
     }
   });
