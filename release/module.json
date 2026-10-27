@@ -2,12 +2,12 @@
   "id": "dnd5e-scriptlets",
   "title": "DND5E Scriplets - 5E QOL bits and pieces",
   "description": "QOL bits and pieces with nowhere else to live",
-  "version": "13.0.6",
+  "version": "13.0.7",
   "library": "false",
   "socket": true,
   "compatibility": {
     "minimum": "13",
-    "verified": "14.368",
+    "verified": "14.369",
     "maximum": "14.999"
   },
   "authors": [
@@ -24,7 +24,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "5.1",
-          "maximum": "5.9.99"
+          "maximum": "6.9.99"
         }
       }
     ],
@@ -67,7 +67,7 @@
   ],
   "url": "https://github.com/tposney/dnd5e-scriptlets",
   "manifest": "https://raw.githubusercontent.com/tposney/dnd5e-scriptlets/v13/release/module.json",
-  "download": "https://github.com/tposney/dnd5e-scriptlets/releases/download/v13.0.6/module.zip",
+  "download": "https://github.com/tposney/dnd5e-scriptlets/releases/download/v13.0.7/module.zip",
   "license": "LICENSE",
   "readme": "README.md",
   "media": [
