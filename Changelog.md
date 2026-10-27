@@ -1,3 +1,10 @@
+### 13.0.7
+* dnd5e 6 support (6.0.6).
+* Fade unprepared spells also works on Tidy5e sheets; new setting *Unprepared Spell Opacity* (10–100%, default 60%) sets how faded they are.
+* Token resizer: a growing token (square grids) moves to a position with room, never covering another token or crossing a wall, and is not resized if there is none; a shrinking token keeps its centre.
+* Alternative advantage: switching a roll back to advantage or disadvantage (e.g. normal, then advantage) lost the bonus.
+* Alternative advantage: with disadvantage a formula of more than one term (e.g. `1d4 + @abilities.str.mod`) subtracted only its first term.
+
 ### 13.0.6
 * Foundry v14 support (verified 14.368); one release covers v13 and v14.
 * Alternate advantage replaces the second d20 on dnd5e 5.x, which marks advantage with adv/dis instead of kh/kl; previously the bonus was added on top of rolling two dice.

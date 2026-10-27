@@ -1,4 +1,15 @@
+// Tidy5e marks an unprepared, preparable spell row itself (can-prepare diminished); the stylesheet fades it while this class is set
+export function setFadeUnpreparedClass(enabled) {
+  document.body.classList.toggle("dnd5e-scriptlets-fade-unprepared", !!enabled);
+}
+
+export function setFadeUnpreparedOpacity(percent) {
+  document.body.style.setProperty("--dnd5e-scriptlets-unprepared-opacity", `${Number(percent) || 60}%`);
+}
+
 export function setupLukasFadeUnprepared() {
+  setFadeUnpreparedClass(game.settings.get("dnd5e-scriptlets", "lukasFadeUnprepared"));
+  setFadeUnpreparedOpacity(game.settings.get("dnd5e-scriptlets", "fadeUnpreparedOpacity"));
 
   Hooks.on("renderBaseActorSheet", (app, html) => {
     // Rather than checking that it is a 5e sheet we check that it is a sheet with items and the correct classes

@@ -7,7 +7,7 @@
   "socket": true,
   "compatibility": {
     "minimum": "13",
-    "verified": "14.368",
+    "verified": "14.369",
     "maximum": "14.999"
   },
   "authors": [
@@ -24,7 +24,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "5.1",
-          "maximum": "5.9.99"
+          "maximum": "6.9.99"
         }
       }
     ],

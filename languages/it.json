@@ -46,8 +46,6 @@
   "dnd5e-scriptlets.AmmoRecoveryMessage.Hint": "Mostra le munizioni recuperate alla fine del combattimento",
   "dnd5e-scriptlets.SilentInitiative.Name": "Iniziativa Silenziosa",
   "dnd5e-scriptlets.SilentInitiative.Hint": "Tira l'iniziativa senza messaggio in chat",
-  "dnd5e-scriptlets.UpdateCreatedOrigins.Name": "Correggi origini effetti alla creazione attori",
-  "dnd5e-scriptlets.UpdateCreatedOrigins.Hint": "Quando viene creato un personaggio, prova a correggere le origini di eventuali effetti",
   "dnd5e-scriptlets.BetterScrollCreation.Name": "Creazione Pergamene Migliorata",
   "dnd5e-scriptlets.BetterScrollCreation.Hint": "Quando crei una pergamena da un incantesimo copia anche effetti e flag",
   "dnd5e-scriptlets.GriddedGridless.Name": "Griglia per scene senza griglia",

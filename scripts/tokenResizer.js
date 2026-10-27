@@ -47,6 +47,47 @@ let sizeData = {
   "unit": { label: "Absolute Unit", tokenSize: 8, minScale: 1, dndSize: "grg" },
 };
 
+/*
+  Where a token can grow to width x height grid spaces on a square grid: a position whose footprint contains the token's
+  current one, inside the scene, overlapping no other token (tokens it already shares space with excepted) and with every
+  space reachable from the token's centre without crossing a movement wall. The nearest to the current centre, or
+  undefined if there is none.
+*/
+export function findGrowthPosition(token, width, height) {
+  const grid = canvas.grid;
+  const size = grid.size;
+  const doc = token.document;
+  const rect = (x, y, w, h) => new PIXI.Rectangle(x, y, w * size, h * size);
+  const overlaps = (a, b) => a.x < b.right && a.right > b.x && a.y < b.bottom && a.bottom > b.y;
+  const current = rect(doc.x, doc.y, doc.width, doc.height);
+  const others = canvas.tokens.placeables.filter(t => t !== token)
+    .map(t => rect(t.document.x, t.document.y, t.document.width, t.document.height))
+    .filter(r => !overlaps(r, current));
+  const scene = canvas.dimensions.sceneRect;
+  const origin = token.center;
+  const base = grid.getTopLeftPoint({ x: doc.x + 1, y: doc.y + 1 });
+  const candidates = [];
+  for (let i = 0; i <= Math.max(0, width - Math.ceil(doc.width)); i++) {
+    for (let j = 0; j <= Math.max(0, height - Math.ceil(doc.height)); j++) {
+      const area = rect(base.x - i * size, base.y - j * size, width, height);
+      candidates.push({ area, distance: Math.hypot(area.x + area.width / 2 - origin.x, area.y + area.height / 2 - origin.y) });
+    }
+  }
+  const fits = (area) => {
+    if (area.x < scene.x || area.y < scene.y || area.right > scene.right || area.bottom > scene.bottom) return false;
+    if (others.some(r => overlaps(r, area))) return false;
+    for (let i = 0; i < width; i++) {
+      for (let j = 0; j < height; j++) {
+        const space = { x: area.x + (i + 0.5) * size, y: area.y + (j + 0.5) * size };
+        if (CONFIG.Canvas.polygonBackends.move.testCollision(origin, space, { type: "move", mode: "any" })) return false;
+      }
+    }
+    return true;
+  };
+  const found = candidates.sort((a, b) => a.distance - b.distance).find(c => fits(c.area));
+  return found ? { x: found.area.x, y: found.area.y } : undefined;
+}
+
 /* Resize the passed tokens to the passed size, which must be a key in the sizeData
    Use sizeDataToUse (defaults to the module defined sizeData) when working which changes to make
  */
@@ -56,6 +97,23 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
   if (!sizeEntry) return;
   for (let token of tokens) {
     const update = { height: sizeEntry.height ?? sizeEntry.tokenSize, width: sizeEntry.width ?? sizeEntry.tokenSize };
+    // growing on a square grid: find room rather than covering neighbours or crossing walls
+    let position = {};
+    if (canvas.grid.isSquare && (update.width > token.document.width || update.height > token.document.height)) {
+      position = findGrowthPosition(token, update.width, update.height);
+      if (!position) {
+        ui.notifications.warn(game.i18n.format("dnd5e-scriptlets.TokenResizer.NoRoom", { name: token.name, size: sizeEntry.label }));
+        continue;
+      }
+      Object.assign(update, position);
+    } else if (canvas.grid.isSquare && Number.isInteger(update.width) && Number.isInteger(update.height)
+      && (update.width < token.document.width || update.height < token.document.height)) {
+      // shrinking: keep the token's centre (up and left when it falls on a grid line, undoing a growth into free space)
+      const size = canvas.grid.size;
+      const { x, y } = canvas.grid.getTopLeftPoint({ x: token.center.x - (update.width - 1) * size / 2 - 1, y: token.center.y - (update.height - 1) * size / 2 - 1 });
+      position = { x, y };
+      Object.assign(update, position);
+    }
     const scaleX = token.document.texture?.scaleX;
     const scaleY = token.document.texture?.scaleY;
     if (scaleX < (sizeEntry.minScaleX ?? sizeEntry.minScale) || scaleY < (sizeEntry.minScaleY ?? sizeEntry.minScale)) {
@@ -63,7 +121,7 @@ export async function doResizeTokens(tokens, size, sizeDataToUse = globalThis.dn
     } else if (sizeEntry.scale) {
       update["texture"] = { scaleX: sizeEntry.scale, scaleY: sizeEntry.scale }
     }
-    await token.document.update(update, { movement: { [token.id]: { waypoints: [{ width: update.width, height: update.height, action: "displace" }] } } });
+    await token.document.update(update, { movement: { [token.id]: { waypoints: [{ ...position, width: update.width, height: update.height, action: "displace" }] } } });
     await token.actor.update({ "system.traits.size": sizeEntry.dndSize ?? size })
   }
 }

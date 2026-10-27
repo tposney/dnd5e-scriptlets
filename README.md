@@ -13,7 +13,7 @@ This module provides a few QOL features for dnd5e that don't really fit anywhere
 This branch is for Foundry v13 and v14 with dnd5e 5.x. Each feature is enabled in the module settings.
 
 ## Lukas' Fade Unprepared Spells
-Spells that are not prepared are faded out on display. Thanks @Lukas
+Spells that are not prepared are faded out on display, on the dnd5e and Tidy5e sheets. *Unprepared Spell Opacity* sets how faded they are (default 60%). Thanks @Lukas
 
 ## Lukas' Item rarity colors
 Color item inventory lines according to the item's rarity. Thanks @Lukas
@@ -22,7 +22,7 @@ Color item inventory lines according to the item's rarity. Thanks @Lukas
 When enabled legendary actions are reset at the start of each round and when an NPC joins combat, instead of at the end of the creature's turn.
 
 ## Token Resizer
-When enabled adds a resizer icon to the token controls sidebar to allow setting selected tokens size.
+When enabled adds a resizer icon to the token controls sidebar to allow setting selected tokens size. On a square grid a token that grows moves to the nearest position with room for its new size: inside the scene, not covering another token (other than one it already shares space with), and not crossing a wall. If there is no such position it keeps its size and a warning is shown. A token that shrinks keeps its centre.
 
 ## Alternate Advantage
 Allows you to specify a roll formula to add/subtract to a roll for advantage/disadvantage instead of rolling 2 dice. Requires libWrapper.

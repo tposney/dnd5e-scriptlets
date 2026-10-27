@@ -1,3 +1,5 @@
+import { setFadeUnpreparedClass, setFadeUnpreparedOpacity } from "./fade-unprepared.js";
+
 export function registerSettings() {
   game.settings.register("dnd5e-scriptlets", "lukasItemRarityColors", {
     name: game.i18n.localize("dnd5e-scriptlets.LukasItemRarityColors.Name"),
@@ -16,7 +18,20 @@ export function registerSettings() {
     default: false,
     config: true,
     type: Boolean,
-    requiresReload: false
+    requiresReload: false,
+    onChange: setFadeUnpreparedClass
+  });
+
+  game.settings.register("dnd5e-scriptlets", "fadeUnpreparedOpacity", {
+    name: game.i18n.localize("dnd5e-scriptlets.FadeUnpreparedOpacity.Name"),
+    hint: game.i18n.localize("dnd5e-scriptlets.FadeUnpreparedOpacity.Hint"),
+    scope: "world",
+    default: 60,
+    config: true,
+    type: Number,
+    range: { min: 10, max: 100, step: 5 },
+    requiresReload: false,
+    onChange: setFadeUnpreparedOpacity
   });
 
   game.settings.register("dnd5e-scriptlets", "ammoTracker", {
